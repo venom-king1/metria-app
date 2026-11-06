@@ -1,11 +1,36 @@
-/* Macro Studio offline cache. No personal logs or account data leave the browser. */
-const CACHE='macro-studio-v2-assets-20261106';
-const FILES=['./','./index.html','./manifest.webmanifest','./apple-touch-icon.png','./icon-192.png','./icon-512.png'];
-self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()).catch(()=>{}))});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE&&k.startsWith('macro-')).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
-self.addEventListener('fetch',e=>{
- if(e.request.method!=='GET'||new URL(e.request.url).origin!==self.location.origin)return;
- if(e.request.mode==='navigate'){
-   e.respondWith(fetch(e.request).then(r=>{if(r.ok){let copy=r.clone();caches.open(CACHE).then(c=>c.put('./index.html',copy)).catch(()=>{})}return r}).catch(async()=>await caches.match('./index.html')||Response.error()));
- }else e.respondWith(caches.match(e.request).then(old=>old||fetch(e.request).then(r=>{if(r.ok){let copy=r.clone();caches.open(CACHE).then(c=>c.put(e.request,copy)).catch(()=>{})}return r})));
+/* Macro v3: offline-first fallback, network-first updates. No remote APIs or data transfer. */
+const CACHE = 'macro-programs-v3-2026-11-06-r2';
+const FILES = ['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
+self.addEventListener('install', event => {
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)).then(() => self.skipWaiting()));
+});
+self.addEventListener('activate', event => {
+  event.waitUntil(Promise.all([
+    caches.keys().then(keys => Promise.all(keys.filter(k => k.startsWith('macro-') && k !== CACHE).map(k => caches.delete(k)))),
+    self.clients.claim()
+  ]));
+});
+self.addEventListener('fetch', event => {
+  const request = event.request;
+  if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) return;
+  const isPage = request.mode === 'navigate' || /\/(?:index\.html)?$/.test(new URL(request.url).pathname);
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE);
+    if (isPage) {
+      try {
+        const response = await fetch(request, { cache: 'no-store' });
+        if (response.ok) await cache.put(request, response.clone());
+        return response;
+      } catch {
+        return (await cache.match(request)) || (await cache.match('./index.html')) || Response.error();
+      }
+    }
+    const hit = await cache.match(request);
+    if (hit) return hit;
+    try {
+      const response = await fetch(request);
+      if (response.ok) await cache.put(request, response.clone());
+      return response;
+    } catch { return Response.error(); }
+  })());
 });

@@ -1,16 +1,16 @@
 {
   "id": "./",
-  "name": "Macro — Know your energy",
+  "name": "Macro — Calorie Strategy & Programs",
   "short_name": "Macro",
-  "description": "A private, adaptive calorie and maintenance planner with weight and activity trends.",
+  "description": "Private calorie planning, weight trends, structured programs and gentle weekly reviews.",
+  "lang": "en",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "display_override": ["standalone"],
   "background_color": "#181819",
   "theme_color": "#181819",
   "icons": [
-    {"src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
-    {"src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+    {"src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}
   ]
 }
