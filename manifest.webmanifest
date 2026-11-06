@@ -1,1 +1,16 @@
-{"name":"Metria — Adaptive Calorie Planner","short_name":"Metria","id":"./","start_url":"./","scope":"./","display":"standalone","background_color":"#f5f5f7","theme_color":"#f5f5f7","icons":[{"src":"./icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"./icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]}
+{
+  "id": "./",
+  "name": "Macro — Adaptive Calorie Planner",
+  "short_name": "Macro",
+  "description": "A private daily intake, weight and step tracker with conservative maintenance estimates.",
+  "lang": "en",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f4f5",
+  "theme_color": "#f4f4f5",
+  "icons": [
+    {"src":"./icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"./icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}
