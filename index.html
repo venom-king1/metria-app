@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5f5f7" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Metria" />
+  <meta name="description" content="A thoughtful nutrition and weight companion. Log food, follow weight trends, and fine-tune daily targets with evidence." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22122%22%20fill%3D%22%23232326%22/%3E%3Cg%20fill%3D%22%23fff%22%3E%3Crect%20x%3D%22126%22%20y%3D%22282%22%20width%3D%2252%22%20height%3D%22116%22%20rx%3D%2226%22/%3E%3Crect%20x%3D%22229%22%20y%3D%22204%22%20width%3D%2252%22%20height%3D%22194%22%20rx%3D%2226%22/%3E%3Crect%20x%3D%22332%22%20y%3D%22119%22%20width%3D%2252%22%20height%3D%22279%22%20rx%3D%2226%22/%3E%3C/g%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAABmJLR0QA/wD/AP+gvaeTAAAOdUlEQVR4nO3dfXBUVYIF8HNfEkIIQtIdhIUYSLrTIQSSocZ1rQEjhNHBxXEp0fUzKKAzJTsuMu4wWLuKlrvjzDK4lt81o6j4VdQ4jkCtoLARLHBmpcBdWDYk6SYdgkpGkg6EhJB0v7t/JLAEE9Ld7/Z76Zvzq6Ig9rv3HaxD5+Z1v9sCQ4Ph9XqLTVNMNQzhkxJFAAoBjAWQ2fv7ZQBSnQw5jHUBONn7qxXAN4A4JIQ8EImI/3a5Rlfv27ev29mIPYRTJ/Z4iqcD4QpAzAVwLYBsp7KQZWcBuVNKY5NhRLb4/f5jTgWxtdAFBQV5QqRUAqISQJGd5ybbSAD7hcD69PS0DYcOHTpt58ntKLTwer03SmmsRM8zsWHDOWloOCkl1huG+YLf7w/YccJEFtrwer0LpDQeA3BlAs9DQ58J4PemmfKz+vrqhkSeKCGF9niKKgD5HIBpiZifkpOUaDcMrEtPT1ubqKWI0kJPnlz8F2lp5q+llHeqnJe0c0wIc5nf7/9Y9cTKCu3xFN4LiGfQc4mNaDBSSrw0evTIVQcOHGhXNanlQpeWlma2t3e+AOAeBXlo2JF1Qsjb/H7/Fypms1Ror9c7TUrjd+BamSwRHULgHr+/5j2rM6XEO9Dr9V4tpbEdwGSrIWjYSwNwq9vtzmhpaa5Cz7XsuMRVaK+36CYpxRYAY+I9MdFFBIDZLpe7IBRq3ow4Sx1zob1eX6WUeAdAejwnJBpEmcvl9pWVzdgUDAbNWAfHtIb2er0/lNJ4H3yTECWYlPK97Owxd8b6pqeoi5mf77tGSmyMZQxRvIQQt7S2tnUDuAsxLD+iWnJ4vd5pQogd6HkLJ5FdZrhcOamhUHNVtAMGLXRpaWlmV1dkO4ArLEUjik+5y+X+OhRq3hfNwYO+8633RRNeZyYnPVdQ4JsdzYGX/KGw9+Xs15REIrJEHO3uHvGdo0cPhi511IDP0FOmlEwAxL+pD0YUD5mXlnb2lcGOGrDQqanhdQCylGYisuZmj8d3/6UO6HfJUVhYWG6aYudAjxM5qC0lBcW1tbVf9vdgf8/QhmmKl8Ay09B0WSSCtQM9+K1Cezy+W8GrGjS03dFzV9S3XVxoIQQesSEQkUXyWfTzOkqfQvfcnY0y2zIRxa+kdzXRR59C9241QJQs/gkXdfj8FwUFBXno2TeDKFmUeL1Fiy78D+cLbRipd4ObwFCSMU358IVfX1jgSpuzEFkmBP4qP993/uc+A+jZOFFKTHUuFlH8DEMuOf/nnt/C/V7TI0oO4u6SkpIRwPlCi7lOxiGyyH3mTPc1QE+hU8CrG5TkhBDzgZ4dQqeCm41T0pM3AD1vROIPg6SDEp/PN8kwDMGd9EkL4TDKjN4P6CHSgJhhAPA4HYNIBcMwZxjgbVakDVFoAIKbx5AWpERWKiBZ6GEkPT0dbrcbXV1dOHHihNNxVMtKBTDa6RSUWFlZWVi8uBLXX38dpk79/2sAHR0d2LHjP/Duuxuxd+9eBxMqkyU8Hl/cm0vT0HfbbX+L1atX4bLLLv2NeNOmLXj88SfQ1tZmU7LEYKE1tnr1Ktx337Koj6+ursbSpffhm2+SdynCN/RrqrLy7pjKDADFxcV4+eWXMGLEiASlSrwUl8v9uNMhSK3x48fjN795GampsW/lPWHCeKSnp2P37j0JSJZ4fIbW0I9/fD9GjhwZ9/jFiyuRmztJYSL7sNCaEULg+uuvszTHiBEjsGjRosEPHIJYaM3k5uZiwoQJluepqJhjeQ4nsNCamTBhvJJ5Jk9Ozo+fZKE1k5GRoWSe0aOT8/U2Fpq0wkKTVlho0goLTVphoUkrLDRphYUmrbDQpBUWmrTCQpNWWGjSCgtNWmGhSSssNGmFhSatsNCkFRaatMJCk1ZYaNJK7DuRUNQyMjKQm5sLt9uFUCiExsZj6OjocDqW1ljoBLjqqquwbNkSzJr1vT4bvnR3d2PXrk+xfv3r+Pzzzx1MqC8WWqFRo0bhV796CjfcML/fx9PS0vD978/DvHkVeP/9P2DNmifQ2dlpc0q9cQ2tyJgxY7Bx4zsDlvlCQggsWnQzXn99fdJuFzBUsdAKCCHwzDNPo7i4OKZxV175XaxbtxZCiAQlG35YaAUWLPhrlJdfE9fYefMqcPvttylONHyx0AosX/6ApfErVjyobMej4Y6FtmjKlMnw+QotzZGTk4M5c65VlGh4Y6EtKisrVTJPeXm5knmGOxbaonHjLlcyzxVX5CqZZ7hjoS3KyIh/p/y+83ANrQILTVphoUkrLDRphYUmrbDQpBUWmrTCQpNWWGjSCgtNWmGhSSssNGmFhSatsNCkFRaatMJCk1ZYaNIKC01a0WLnpIyMDMydOwdz5lyLvLw8jB07Bk1Nf0ZNTQ0++GAzqqurnY5INkn6Qt966yKsXPkQLr+87719hYWFmD17FpYtW4qqqio88cST+PLLrxxKSXZJ2iVHamoqfvnLX+Cpp37xrTJfrKKiAps2fYCZM2falI6ckrSFXrPmUdxyy6Koj8/KGosNG17DtGnTEpiKnJaUhZ4//we4447bYx6XkZGBF198DpmZmQlIRUNB0hXaMAw8/PBP4x6fm5uLH/3oPoWJaChJukLPnPkd5OdPsTTHvffe02cjctJH0hV69uzZlufIzMzErFnfU5CGhpqkK/SkSROVzFNUVKRkHhpakq7QWVljlcyTk+NWMg8NLUlXaEDNbvfcNV9PSVhoooGx0KQVFpq0wkKTVlho0goLTVphoUkrLDRphYUmrbDQpBUWmrTCQpNWWGjSCgtNWmGhSSssNGmFhSatsNCkFRaatMJCk1ZYaIuklE5H6ENVnqH294pW0hW6paVFyTyhUIjzXEJra6uSeeyWdIX2+wNK5vn666+VzFNb61cyj6o8wWADuru7Lc/z1VfJuZd20hX6o48+tvztUEqJPXv+qCTP/v37ceLECcvz7NnzmYI0wOnTp5XMper/j92SrtCNjY34+OPtlubYu3evsmegSCSC11573dIcoVAIu3Z9qiQPALzyyquWxpumic2bNytKY6+kKzQArF37a3R0dMQ1VkqJtWufVprnjTfeRH19MO7xzz//Is6cOaMsz5/+9J/Ytu2juMdv2fLvOHy4RlkeOyVloYPBBvz854/EtfR4/vkX8cUXXyjN09nZieXLf4L29vaYx+7cuQtvvfW20jwA8Mgj/xjXP7KGhgY8+eSTyvPYxQDQ5XSIeGzdug2rVq1GOByOeswbb2zAs88+l5A8dXV1WLx4SUxXGXbv3oOHHvopIpGI8jxtbW24665K1NTURj2mvj6IZcvuR2vrSeV5bNKd4nK5/x5AUn5Gw+HDh7F792eYMWMGxo3LGfC448eP49FH1+C3v7W2thxMU1MTPvzwQ0yePBn5+fkDHtfe3o4XXngJjz22BmfPnk1Ynvb2dmzevAWjRo3C9OnTYRj9f0OORCJ4773fY8WKh9DU9OeE5bFBq/B4fHUAvE4nsSIlJQXl5dfgxhsXwOv1ICcnBy0tIfj9flRVfYLt23egs7PT1kxlZWVYuPAmTJ9egokTJ+LUqVNobDyGXbs+xdat25RdT49WXl4eFi78G1x99VWYNCkXXV1dOH78OD777I/YunUrgsEGW/MkSFB4PL7PAfyl00mIFDhoAFDzygCR81oNIfA/TqcgUkEI4TcA86DTQYhUME3UGADUXpQlcogQssbw+/3HAFQ7HYbIKsOQNQYASIltTochsqi5rq6up9CGYbLQlNSklJ8AMM+9dLRLCNh7pZ9IIcMQnwC9b07y+/1npRRvORuJKH7hMKqAC95tJ6V4xbk4RJb8bzBYexi4oNBHjhw+CGCvY5GI4iSl2HDuzxe//WqdzVmIrDKFCL9z7os+hQ4Ean8HXpOm5FIVCAQaz31x8TO0KaX8Z5sDEVnR53460c8BKR6P7wCAafbkIYqX2B8I1FwJ4Py9eP3dwhAxDPnAhQcRDUVSmv+Ci3qa0t+BLS0tDS6XeyqA6XYEI4rDgSNH6lbiokIPeNd3JJK2EkDS3i1JWpNCGCsAmBc/MGChg8FDxwGsSmQqoji96fcf3tnfA/0uOc4JhZr3uVzuYnDpQUPHqXA4ZeHJkydO9/fgoBvNdHenPwCgcbDjiOwgpVje0FA94M6Wgxb66NGDISlxJ5J0QxrSh5R49ciRmktuM3XJJcc5oVDzUZfLdQwQC9VEI4rZoc7O0ze3tbVdcq/gqAoNAKFQy3+5XDmpAMotRyOKgRBoiUQwv7ExOOgm2lEXGgBCoeadbndOIYAZcacjionoAIwb6utrorqZO6ZCA0BLS/Om7Gx3gRAojT0cUUwiAO4IBGqi3hA8nu10I3l5E5cAeDeOsUTRCguBJYFA7R9iGdTfm5OileLx+NYDWGxhDqJ+iA4hIrf7/f4tsY6MeclxARkKNW/Kzs45IwQqYO0fB9E5ISmxIBCo2xHPYCuF7jl7qHlPdrbrECAWCIERVuejYe2gaYof1NfXxr2bl7JnVa/XO1NKsREQharmpOFDSrza1dXx4LFjxyx92IzSZcLEiRNHjRw5+l+FwHLVc5O2WqUUPxnsFcBoJaR0+fmF1xmGWA8gNxHzkxYkgDdNs3tVfX19k6pJE/YsWlpamtnR0fkz08Q/CJGcn+FCCXPAMOSDdXV16j6csVfClwVFRUUTw2G5BsAyKPghlJLaAQDrAoHat9Hzoolytq1zvV6vxzSNvxMCSwGMteu85DgTQBWApwOB2q2JPpntP7iVlJSMPnMmXCmEXArgu05kIFscklK8aRiRt3v3ILeFo2Xy+XyTwmH5QyHETQDmAhjpZB6ypFkIsROQVeEwqs7tNWe3IfPsOGfOnNTGxqapUpplQqAMkCUAxqFneZLV+4sv3DgjDKBNSrQKgdMATgkhak0TNULI2kgE1cFgbS36uWnVbv8HdJ4EOHCWeCgAAAAASUVORK5CYII=" />
+  <style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,"Helvetica Neue",Arial,sans-serif;color:#1d1d1f;background:#f5f5f7;font-synthesis:none;-webkit-font-smoothing:antialiased;--canvas:#f5f5f7;--card:#fff;--ink:#1d1d1f;--muted:#8b8b8b;--line:#ebebeb;--blue:#272729;--violet:#38383a;--teal:#68686b;--orange:#98989b;--shadow:0 12px 35px rgba(33,49,84,.035),0 1px 4px rgba(28,45,80,.025)}
+*{box-sizing:border-box}html{min-height:100%;scroll-behavior:smooth}body{margin:0;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}input,select,textarea{outline:none}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(67,108,244,.36);outline-offset:2px}button:disabled{opacity:.48;cursor:not-allowed}svg{display:block}.app-shell{display:flex;min-height:100vh}.sidebar{width:246px;flex:0 0 246px;background:#fff;border-right:1px solid #ebebeb;padding:35px 17px 24px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}.brand{font-size:24px;font-weight:770;letter-spacing:-1px;display:flex;align-items:center;gap:11px;color:#1d1d1f;user-select:none}.brand-large{margin:0 10px 10px}.brand-mark{display:inline-flex;align-items:flex-end;justify-content:center;gap:3px;width:34px;height:34px;border-radius:12px;background:linear-gradient(148deg,#575757,#575757);padding:9px 8px;box-shadow:0 5px 13px #5757572b}.brand-mark span{width:5px;border-radius:4px;background:white;display:block}.brand-mark span:nth-child(1){height:8px;opacity:.8}.brand-mark span:nth-child(2){height:13px}.brand-mark span:nth-child(3){height:18px}.sidebar-subtitle{font-size:10px;font-weight:780;letter-spacing:2.3px;color:#b6b6b6;margin:0 0 55px 13px}.side-nav{display:flex;flex-direction:column;gap:7px}.nav-item{border:none;width:100%;text-align:left;display:flex;align-items:center;gap:15px;min-height:48px;padding:0 17px;border-radius:14px;color:#575757;background:none;font-weight:620;font-size:14px;transition:background .18s,color .18s}.nav-item:hover{color:#414141;background:#f6f8ff}.nav-item.active{background:#ebebeb;color:#272729}.nav-item .icon{width:19px;height:19px}.sidebar-bottom{margin:auto 11px 0;border-top:1px solid #ebebeb;padding-top:23px}.side-privacy{font-size:12px;font-weight:650;color:#575757}.privacy-dot,.secure-dot{display:inline-block;height:7px;width:7px;border-radius:50%;background:#707074;margin-right:5px}.side-small{color:#b6b6b6;font-size:11px;line-height:1.7;margin-top:5px}.content-area{min-width:0;width:100%;flex:1}.topbar{height:93px;display:flex;align-items:center;justify-content:space-between;padding:0 max(36px,calc((100vw - 246px - 1170px)/2));border-bottom:1px solid #ebebeb;background:rgba(255,255,255,.66)}.eyebrow{font-size:10px;color:#8b8b8b;font-weight:750;letter-spacing:1.9px}.topbar-right{display:flex;gap:18px;align-items:center}.secure-tag{font-size:11px;color:#8b8b8b;font-weight:650}.avatar-button{width:39px;height:39px;border-radius:50%;background:linear-gradient(135deg,#ebebeb,#ebebeb);border:2px solid white;box-shadow:0 0 0 1px #ebebeb;color:#575757;font-weight:760;font-size:13px}.mobile-brand{display:none}.main-content{max-width:1170px;margin:auto;padding:34px 36px 64px;min-height:calc(100vh - 93px)}.bottom-nav{display:none}.head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin:0 0 28px}.kicker{color:#575757;font-weight:630;font-size:13px;line-height:1.5;margin:0 0 4px}.page-title{font-size:31px;line-height:1.2;letter-spacing:-1.4px;font-weight:780;margin:0;color:#414141}.page-subtitle{font-size:13px;color:#8b8b8b;margin:9px 0 0;line-height:1.6}.date-chip{display:flex;align-items:center;gap:8px;color:#575757;background:#fff;border:1px solid #edf0f6;border-radius:13px;padding:11px 14px;font-size:12px;font-weight:660;white-space:nowrap;box-shadow:var(--shadow)}.date-chip .icon{width:16px;height:16px}.grid-top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.98fr);gap:19px}.card{background:var(--card);border:1px solid #ebebeb;border-radius:25px;box-shadow:var(--shadow)}.card-pad{padding:23px}.hero-card{padding:27px 30px;display:flex;align-items:center;justify-content:space-between;gap:13px;min-height:300px;position:relative;overflow:hidden}.hero-card::before{content:"";position:absolute;right:-165px;top:-190px;height:390px;width:390px;background:radial-gradient(circle,#ebebeb,transparent 67%);pointer-events:none}.hero-copy{z-index:1;min-width:0}.section-mini{font-size:11px;font-weight:770;letter-spacing:1.35px;color:#8b8b8b;text-transform:uppercase}.hero-label{font-size:13px;color:#575757;font-weight:600;margin-bottom:13px}.hero-number{font-size:57px;line-height:1;letter-spacing:-3px;font-weight:810;color:#414141}.hero-number small{font-size:16px;letter-spacing:-.3px;font-weight:600;color:#8b8b8b;margin-left:5px}.hero-divider{margin:18px 0;border:0;border-top:1px solid #ebebeb;width:190px}.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:22px}.hero-stats b{display:block;font-size:21px;letter-spacing:-.6px;margin:4px 0}.hero-stats span{color:#8b8b8b;font-size:11px;font-weight:630}.hero-ring{width:226px;height:226px;position:relative;flex-shrink:0;display:grid;place-items:center}.hero-ring svg{width:100%;height:100%;transform:rotate(-90deg)}.ring-track{stroke:#ebebeb;fill:none;stroke-width:11}.ring-fill{fill:none;stroke-width:11;stroke-linecap:round;transition:stroke-dashoffset .4s ease}.ring-center{position:absolute;text-align:center;display:flex;flex-direction:column;align-items:center;gap:5px}.ring-center .icon{color:#575757}.ring-percent{font-size:33px;font-weight:800;letter-spacing:-1.4px}.ring-center small{font-size:11px;font-weight:690;color:#b6b6b6}.plan-preview-card{background:linear-gradient(148deg,#222224,#48484b 95%);color:white;padding:25px;display:flex;flex-direction:column;min-height:300px;position:relative;overflow:hidden}.plan-preview-card::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;border:1px solid #ffffff2c;right:-90px;top:-75px;box-shadow:0 0 0 35px #ffffff0d,0 0 0 76px #ffffff08}.plan-preview-card .section-mini{color:#ebebeb}.plan-status{border:1px solid #ffffff42;border-radius:30px;font-size:10px;font-weight:710;padding:7px 10px;background:#ffffff20;display:inline-flex;align-items:center;gap:5px}.plan-preview-top{display:flex;align-items:center;justify-content:space-between;z-index:1}.plan-preview-body{z-index:1;margin-top:31px}.tomorrow-number{font-size:49px;letter-spacing:-2px;font-weight:790;line-height:1.05}.tomorrow-number span{font-size:14px;font-weight:590;color:#d6d6d6;letter-spacing:0}.tomorrow-desc{font-size:12px;line-height:1.6;color:#ebebeb;margin:11px 0 0;max-width:285px}.plan-preview-bottom{margin-top:auto;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:24px}.plan-preview-bottom small{color:#ebebeb;font-size:11px}.light-button{background:white;color:#414141;border:0;border-radius:12px;font-weight:740;font-size:12px;padding:12px 14px;display:flex;align-items:center;gap:8px}.light-button:hover{background:#ebebeb}.light-button .icon{width:14px;height:14px}.row-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:30px 0 16px}.row-title h2{font-size:18px;letter-spacing:-.55px;font-weight:760;margin:0}.row-title h3{font-size:16px;letter-spacing:-.35px;font-weight:750;margin:0}.text-link{border:0;background:transparent;color:var(--blue);font-size:12px;font-weight:740;display:flex;align-items:center;gap:6px;padding:4px 0}.text-link:hover{text-decoration:underline}.text-link .icon{width:14px;height:14px}.macro-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.macro-card{padding:22px 22px 24px;min-width:0}.macro-top{display:flex;align-items:center;justify-content:space-between}.macro-icon{height:37px;width:37px;display:grid;place-items:center;border-radius:12px}.macro-icon .icon{width:19px;height:19px}.macro-icon.blue{background:#ebebeb;color:#575757}.macro-icon.teal{background:#ebebeb;color:#8b8b8b}.macro-icon.orange{background:#ebebeb;color:#b6b6b6}.macro-name{font-size:12px;font-weight:720;color:#575757}.macro-value{font-size:28px;font-weight:790;letter-spacing:-1px;margin:18px 0 8px}.macro-value small{font-size:12px;font-weight:590;color:#b6b6b6;letter-spacing:0}.track{height:7px;width:100%;background:#eef1f6;border-radius:30px;overflow:hidden;margin-top:14px}.track span{display:block;height:100%;border-radius:30px;transition:width .3s}.track .blue{background:#575757}.track .teal{background:#96969a}.track .orange{background:#acacae}.macro-caption{color:#b6b6b6;font-size:11px;line-height:1.5;margin-top:8px}.lower-grid{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(280px,1fr);gap:18px;margin-top:21px}.metric-card{padding:23px;min-height:268px}.card-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.card-heading h3{font-size:16px;letter-spacing:-.5px;margin:0;font-weight:760}.card-heading p{font-size:11px;color:#8b8b8b;margin:6px 0 0}.stat-large{font-size:30px;letter-spacing:-1.2px;font-weight:790;margin-top:20px}.stat-large small{font-size:12px;letter-spacing:0;font-weight:600;color:#8b8b8b}.trend-badge{display:inline-flex;align-items:center;gap:5px;color:#575757;background:#ebebeb;padding:7px 9px;border-radius:10px;font-size:11px;font-weight:720}.chart-wrapper{height:112px;margin:12px -5px 0;overflow:hidden}.chart-wrapper svg{width:100%;height:100%;overflow:visible}.axis-bottom{display:flex;justify-content:space-between;font-size:10px;color:#b6b6b6;padding:0 4px;margin-top:7px}.quick-list{display:flex;flex-direction:column;gap:10px;margin-top:18px}.quick-action{display:flex;align-items:center;gap:12px;width:100%;padding:11px;border-radius:14px;border:1px solid #ebebeb;background:#fff;text-align:left;transition:.2s}.quick-action:hover{background:#f8faff;border-color:#ebebeb}.quick-icon{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;flex-shrink:0}.quick-icon .icon{width:18px;height:18px}.quick-icon.blue{background:#ebebeb;color:#575757}.quick-icon.orange{background:#ebebeb;color:#b6b6b6}.quick-icon.teal{background:#f6f6f6;color:#8b8b8b}.quick-action strong{display:block;font-size:12px;color:#414141;font-weight:710}.quick-action small{display:block;font-size:10px;color:#8b8b8b;margin-top:4px}.quick-action .arrow{margin-left:auto;color:#b6b6b6}.notice{padding:16px 18px;border:1px solid #ebebeb;border-radius:17px;background:#ebebeb;color:#575757;display:flex;align-items:flex-start;gap:11px;font-size:12px;line-height:1.6}.notice .icon{width:18px;height:18px;flex-shrink:0;color:#575757;margin-top:1px}.notice b{color:#414141}.notice.demo-notice{margin-bottom:23px}.notice button{border:0;background:transparent;color:#414141;font-weight:770;text-decoration:underline;padding:0 1px}.notice.warning{background:#f6f6f6;border-color:#ebebeb;color:#575757}.notice.warning .icon{color:#b6b6b6}.notice.warning b{color:#575757}.button{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:13px;font-size:13px;font-weight:730;padding:13px 18px;min-height:43px;transition:background .18s,transform .18s}.button:active{transform:scale(.985)}.button .icon{width:17px;height:17px}.button.primary{background:#575757;color:#fff;box-shadow:0 5px 14px #5757572c}.button.primary:hover{background:#414141}.button.secondary{background:#ebebeb;color:#575757}.button.secondary:hover{background:#ebebeb}.button.ghost{background:#fff;color:#575757;border:1px solid #ebebeb}.button.ghost:hover{background:#f7f9ff}.button.danger{background:#ebebeb;color:#575757}.button.full{width:100%}.button.small{padding:10px 13px;min-height:37px;font-size:12px}.insight-card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #ebebeb;padding:18px 20px;border-radius:19px;margin-top:20px}.insight-symbol{flex-shrink:0;width:43px;height:43px;background:#ebebeb;border-radius:14px;display:grid;place-items:center;color:#575757}.insight-card h3{font-size:12px;margin:0 0 5px;font-weight:750}.insight-card p{font-size:11px;line-height:1.6;margin:0;color:#8b8b8b}.sub-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.sub-headline{font-size:20px;font-weight:760;letter-spacing:-.5px;margin:0}.segmented{display:inline-flex;gap:3px;padding:4px;background:#ebebeb;border-radius:12px}.segmented button{background:none;border:0;border-radius:9px;padding:8px 14px;color:#8b8b8b;font-size:11px;font-weight:750}.segmented button.active{background:#fff;box-shadow:0 2px 7px #41414111;color:#414141}.day-strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px;margin:16px 0 20px}.day-pill{border:1px solid #ebebeb;background:#fff;padding:12px 4px;min-height:73px;border-radius:16px;color:#8b8b8b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}.day-pill .weekday{font-size:10px;font-weight:730;text-transform:uppercase}.day-pill .day-number{font-size:15px;font-weight:760;color:#414141}.day-pill.active{background:#242426;color:#ebebeb;border-color:#242426;box-shadow:0 8px 20px #5757572e}.day-pill.active .day-number{color:#fff}.day-pill.has-entry:not(.active) .day-number::after{content:"";display:block;width:4px;height:4px;border-radius:50%;background:#575757;margin:3px auto -7px}.summary-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:19px}.summary-block{padding:18px;border-radius:18px;border:1px solid #ebebeb;background:#fff}.summary-block small{color:#8b8b8b;font-size:11px;font-weight:600}.summary-block strong{display:block;color:#414141;font-size:23px;letter-spacing:-.8px;margin-top:8px}.summary-block strong em{font-size:12px;font-style:normal;color:#b6b6b6;font-weight:650}.log-columns{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.78fr);gap:18px}.log-section{padding:22px;margin-bottom:16px}.meal-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:17px}.meal-name{font-size:14px;font-weight:780;letter-spacing:-.3px;margin:0;display:flex;align-items:center;gap:9px}.meal-count{font-size:10px;color:#b6b6b6;margin-left:6px;font-weight:600}.meal-kcal{font-size:12px;color:#8b8b8b;font-weight:720}.food-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid #f0f2f7}.food-avatar{height:35px;width:35px;border-radius:12px;background:#ebebeb;color:#575757;display:grid;place-items:center;flex-shrink:0}.food-row strong{display:block;font-size:12px;font-weight:720}.food-row small{display:block;color:#b6b6b6;font-size:10px;margin-top:5px}.food-row .food-energy{margin-left:auto;color:#575757;font-size:12px;font-weight:710;white-space:nowrap}.icon-button{height:31px;width:31px;border-radius:10px;border:0;background:#f5f7fb;display:grid;place-items:center;color:#8b8b8b}.icon-button:hover{background:#ebebeb;color:#414141}.icon-button .icon{width:15px;height:15px}.add-meal-button{border:1px dashed #ebebeb;border-radius:12px;background:#fafbff;padding:12px 15px;width:100%;color:#575757;font-size:11px;font-weight:740;display:flex;align-items:center;justify-content:center;gap:7px;margin-top:9px}.add-meal-button .icon{width:16px;height:16px}.add-meal-button:hover{background:#ebebeb}.sidebar-card{padding:23px;margin-bottom:17px}.mini-macro-list{display:flex;flex-direction:column;gap:18px;margin-top:20px}.mini-macro-row .mini-macro-label{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-size:11px;font-weight:700}.mini-macro-label span{color:#8b8b8b}.mini-macro-label strong{color:#414141}.mini-macro-label em{font-style:normal;color:#b6b6b6;font-weight:570}.diary-note{font-size:11px;line-height:1.6;color:#8b8b8b;margin-top:13px}.complete-toggle{display:flex;align-items:center;gap:11px;border:1px solid #ebebeb;background:#f9fbff;padding:13px;border-radius:14px;width:100%;font-size:12px;color:#575757;text-align:left}.complete-toggle .check{width:21px;height:21px;border:2px solid #d6d6d6;border-radius:7px;display:grid;place-items:center;flex-shrink:0}.complete-toggle.done{background:#f6f6f6;border-color:#ebebeb;color:#575757}.complete-toggle.done .check{background:#68686b;border-color:#68686b;color:white}.inline-label{font-size:11px;color:#8b8b8b;margin:0 0 6px}.card-value{font-size:23px;letter-spacing:-.9px;font-weight:770}.card-unit{font-size:11px;color:#8b8b8b}.mini-metric-row{display:flex;gap:12px;justify-content:space-between;align-items:center}.mini-pill{font-size:10px;font-weight:720;color:#575757;padding:7px 9px;border-radius:10px;background:#ebebeb}.small-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 20px}.small-stat{padding:19px 20px}.small-stat .label{font-size:11px;color:#8b8b8b;font-weight:650}.small-stat .number{font-size:27px;font-weight:790;letter-spacing:-.9px;margin-top:12px}.small-stat .meta{font-size:10px;color:#8b8b8b;margin-top:7px}.big-chart-card{padding:23px;margin-bottom:20px}.chart-legend{display:flex;align-items:center;gap:13px;font-size:10px;color:#8b8b8b;font-weight:640}.legend-item{display:inline-flex;align-items:center;gap:6px}.legend-dot{height:7px;width:7px;border-radius:50%;background:#575757}.legend-dot.light{background:#8b8b8b}.trend-large{height:265px;margin:18px 0 0}.trend-large svg{width:100%;height:100%;overflow:visible}.weight-list{display:flex;flex-direction:column;margin-top:13px}.weight-row{display:flex;align-items:center;gap:11px;padding:12px 0;border-top:1px solid #eff1f7}.weight-row-date{flex:1;font-size:12px;font-weight:710}.weight-row-date small{display:block;color:#b6b6b6;font-size:10px;font-weight:540;margin-top:5px}.weight-row strong{font-size:14px}.weight-row strong small{font-size:11px;color:#b6b6b6;font-weight:600}.empty-state{display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:35px 22px;color:#8b8b8b}.empty-state .icon{width:28px;height:28px;margin-bottom:14px;color:#575757}.empty-state h3{color:#414141;font-size:14px;margin:0 0 6px}.empty-state p{font-size:12px;line-height:1.6;max-width:290px;margin:0}.explain-card{padding:23px}.explain-card h3{font-size:15px;margin:0 0 14px;letter-spacing:-.3px}.explain-card p,.explain-card li{font-size:12px;color:#8b8b8b;line-height:1.75}.explain-card ul{padding-left:19px;margin-bottom:0}.plan-hero{background:linear-gradient(130deg,#242426,#424245);color:#fff;overflow:hidden;position:relative;padding:28px 30px;margin-bottom:20px}.plan-hero::after{content:"";position:absolute;border-radius:50%;width:350px;height:350px;border:1px solid #ffffff30;right:-80px;top:-160px;box-shadow:0 0 0 50px #ffffff07,0 0 0 100px #ffffff08}.plan-hero-content{position:relative;z-index:1}.plan-hero h2{font-size:18px;margin:0 0 5px}.plan-hero p{font-size:12px;color:#ebebeb;margin:0;line-height:1.6}.plan-metrics{display:flex;gap:30px;align-items:end;margin:29px 0 26px}.plan-metric strong{font-size:42px;letter-spacing:-1.8px;display:block;line-height:1}.plan-metric small{font-size:11px;color:#d6d6d6;display:block;margin-top:9px}.plan-metric.secondary-metric strong{font-size:26px;letter-spacing:-1px}.plan-hero .button{background:#fff;color:#575757}.plan-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.info-list{display:flex;flex-direction:column;margin-top:12px}.info-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 0;border-top:1px solid #eff1f6;font-size:12px}.info-row:first-child{border-top:0}.info-row span{color:#8b8b8b}.info-row b{color:#414141;font-weight:730}.goal-chooser{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}.goal-option{border:1px solid #ebebeb;background:#fff;border-radius:11px;padding:12px 16px;font-size:11px;color:#575757;font-weight:730}.goal-option.active{border-color:#d6d6d6;background:#ebebeb;color:#575757}.plan-callout{display:flex;gap:12px;padding:17px;border-radius:16px;background:#f6f6f6;margin-top:19px}.plan-callout .icon{flex-shrink:0;color:#575757}.plan-callout strong{font-size:12px;color:#414141}.plan-callout p{font-size:11px;color:#8b8b8b;line-height:1.65;margin:5px 0 0}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:flex;flex-direction:column;gap:7px;min-width:0}.field label{color:#575757;font-size:11px;font-weight:730}.field input,.field select,.field textarea{width:100%;appearance:none;background:#f8f9fc;border:1px solid #ebebeb;border-radius:12px;padding:12px 13px;min-height:43px;font-size:14px;color:#414141}.field select{background-image:url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%238592a8" stroke-width="2"%3E%3Cpath d="m6 9 6 6 6-6"/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right 12px center;padding-right:34px}.field input:focus,.field select:focus{background:white;border-color:#575757}.field .hint{color:#b6b6b6;font-size:10px;line-height:1.5}.settings-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.modal-backdrop{position:fixed;inset:0;z-index:50;background:rgba(24,35,56,.46);backdrop-filter:blur(7px);display:flex;align-items:center;justify-content:center;padding:16px;animation:fade-in .15s ease}.modal{width:min(520px,100%);max-height:min(90vh,800px);display:flex;flex-direction:column;border-radius:25px;background:white;box-shadow:0 30px 100px #41414142;animation:lift-in .2s ease;overflow:hidden}.modal-header{display:flex;align-items:center;justify-content:space-between;padding:23px 24px 17px;border-bottom:1px solid #f0f2f7}.modal-header h2{font-size:20px;letter-spacing:-.6px;margin:0}.modal-header p{font-size:11px;color:#8b8b8b;margin:5px 0 0;line-height:1.6}.modal-close{border:0;background:#f3f5fa;height:32px;width:32px;border-radius:10px;color:#8b8b8b;display:grid;place-items:center}.modal-body{padding:23px 24px;overflow:auto;overscroll-behavior:contain}.modal-footer{padding:15px 24px 23px;display:flex;justify-content:flex-end;gap:10px;border-top:1px solid #f1f3f8;flex-shrink:0}.modal .input-caption{font-size:11px;color:#8b8b8b;line-height:1.6;margin-top:10px}.modal-badge{font-size:11px;padding:9px 11px;color:#575757;background:#ebebeb;border-radius:12px;margin-bottom:18px;line-height:1.5}.calorie-preview{padding:15px;border-radius:13px;background:#ebebeb;display:flex;align-items:center;justify-content:space-between;margin-top:16px;color:#414141;font-size:12px}.calorie-preview strong{font-size:16px}.toast-stack{position:fixed;right:22px;bottom:24px;z-index:99;display:flex;flex-direction:column;gap:9px}.toast{display:flex;align-items:center;gap:10px;background:#414141;color:white;padding:13px 17px;border-radius:13px;box-shadow:0 9px 30px #41414133;font-size:12px;max-width:340px}.toast .icon{width:15px;height:15px;color:#d6d6d6}.subtle-divider{height:1px;background:#eff1f7;margin:20px 0}.muted{color:#8b8b8b}.align-right{text-align:right}.water-controls{display:flex;gap:8px;margin-top:17px}.water-controls button{flex:1;background:#ebebeb;color:#575757;border:1px solid #ebebeb;border-radius:11px;padding:12px 6px;font-size:11px;font-weight:750}.water-controls button:hover{background:#ebebeb}.status-block{background:#f7f9fd;border:1px solid #ebebeb;border-radius:15px;padding:14px 16px;font-size:11px;color:#8b8b8b;line-height:1.65}.status-block b{color:#575757}.metric-dot{display:inline-block;width:7px;height:7px;background:#575757;border-radius:50%;margin-right:7px}.footer-text{color:#b6b6b6;font-size:10px;line-height:1.65;margin:25px 0 0}.clickable{cursor:pointer}.screen-stack{display:flex;flex-direction:column;gap:18px}.mini-separator{background:#ebebeb;height:1px;margin:15px 0}.weight-trend{font-size:11px;color:#8b8b8b;font-weight:600}.lock-text{font-size:11px;color:#b6b6b6;line-height:1.5;margin:12px 0 0}.progress-dots{display:flex;gap:5px;align-items:center}.progress-dots span{height:7px;width:7px;border-radius:50%;background:#ebebeb}.progress-dots span.fill{background:#575757}.date-field{border:1px solid #ebebeb;border-radius:12px;padding:9px;background:#fff;color:#575757;font-size:12px;max-width:150px}.date-field::-webkit-calendar-picker-indicator{opacity:.55}.complete-mark{background:#f6f6f6;color:#575757;padding:5px 8px;border-radius:8px;font-size:10px;font-weight:730}.demo-label{font-size:9px;font-weight:850;letter-spacing:1.3px;color:#575757;background:#ebebeb;border-radius:8px;padding:6px 9px;display:inline-flex;margin-left:9px;vertical-align:middle}.nav-divider{height:1px;background:#ebebeb;margin:12px 6px}.small-print{font-size:11px;line-height:1.7;color:#8b8b8b}.empty-ring{color:#575757}.right-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.screen-content{animation:fade-in .16s ease}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}@keyframes lift-in{from{opacity:.85;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1150px){.sidebar{width:212px;flex-basis:212px}.topbar{padding:0 26px}.main-content{padding:30px 25px 60px}.hero-card{padding:23px}.hero-ring{width:185px;height:185px}.hero-number{font-size:49px}.macro-card{padding:18px}}
+@media(max-width:850px){.sidebar{display:none}.topbar{height:66px;padding:0 21px;position:sticky;top:0;z-index:20;background:rgba(249,250,253,.91);backdrop-filter:blur(20px);border-bottom:1px solid #edf0f5}.mobile-brand{display:flex;font-size:22px}.topbar-left{display:none}.topbar-right{gap:13px}.main-content{padding:26px 20px 110px;max-width:760px}.bottom-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:25;height:calc(69px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(22px);box-shadow:0 -7px 30px #4141410b;border-top:1px solid #ebebeb;justify-content:space-around;padding:7px 9px calc(7px + env(safe-area-inset-bottom))}.bottom-item{background:none;border:0;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;flex:1;color:#8b8b8b;font-size:10px;font-weight:680;min-width:0}.bottom-item .icon{width:22px;height:22px}.bottom-item.active{color:#575757}.bottom-item.active .icon{stroke-width:2.5}.toast-stack{bottom:calc(83px + env(safe-area-inset-bottom));right:14px;left:14px}.toast{margin-left:auto;max-width:100%}}
+@media(max-width:620px){.main-content{padding:22px 16px 112px}.page-title{font-size:26px;letter-spacing:-1px}.head-row{margin-bottom:23px}.date-chip{font-size:10px;padding:10px}.grid-top,.lower-grid,.log-columns,.plan-detail-grid{grid-template-columns:1fr}.hero-card{min-height:260px;padding:24px 21px}.hero-number{font-size:52px}.hero-ring{width:178px;height:178px}.ring-percent{font-size:28px}.ring-center .icon{width:17px;height:17px}.hero-divider{margin:17px 0;width:130px}.hero-stats{gap:12px}.hero-stats b{font-size:18px}.plan-preview-card{min-height:246px}.plan-preview-body{margin-top:20px}.tomorrow-number{font-size:45px}.plan-preview-bottom{padding-top:16px}.macro-grid{gap:10px}.macro-card{padding:15px 12px 17px;border-radius:19px}.macro-icon{height:31px;width:31px;border-radius:10px}.macro-name{font-size:11px}.macro-value{font-size:23px;margin-top:14px}.macro-value small{font-size:10px}.macro-caption{font-size:9px}.track{margin-top:11px;height:6px}.row-title{margin:24px 0 13px}.card-pad{padding:19px}.small-grid{gap:9px}.small-stat{padding:16px 11px;border-radius:17px}.small-stat .number{font-size:22px}.small-stat .label{font-size:10px}.summary-strip{gap:8px}.summary-block{padding:14px 8px;border-radius:15px}.summary-block strong{font-size:19px}.summary-block small{font-size:10px}.day-strip{gap:6px}.day-pill{min-height:67px;border-radius:13px}.big-chart-card,.explain-card,.sidebar-card{padding:20px}.modal-backdrop{align-items:flex-end;padding:0}.modal{width:100%;max-height:93dvh;border-radius:25px 25px 0 0;padding-bottom:env(safe-area-inset-bottom)}.modal-body{padding:20px}.modal-header{padding:20px}.modal-footer{padding:14px 20px 18px}.plan-hero{padding:23px 20px}.plan-metrics{gap:22px}.plan-metric strong{font-size:37px}.plan-metric.secondary-metric strong{font-size:24px}.secure-tag{display:none}}
+@media(max-width:380px){.main-content{padding-left:12px;padding-right:12px}.hero-ring{width:143px;height:143px}.hero-number{font-size:43px}.hero-stats{gap:10px}.hero-stats b{font-size:16px}.hero-card{padding:19px 16px}.hero-ring .ring-percent{font-size:25px}.ring-center small{font-size:9px}.macro-name{font-size:10px}.macro-value{font-size:20px}.form-grid{gap:10px}.day-strip{gap:4px}.day-pill{min-height:62px}.day-pill .day-number{font-size:13px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.001ms!important;transition-duration:.001ms!important}}
+
+
+/* METRIA STUDIO · MONOCHROME DESIGN SYSTEM · v2 */
+:root {
+  color-scheme: light;
+  --canvas:#f5f5f7; --card:#ffffff; --ink:#1d1d1f; --muted:#6e6e73;
+  --line:#e8e8ed; --blue:#242426; --violet:#424245; --teal:#6d6d70; --orange:#96969a;
+  --shadow:0 2px 8px rgba(0,0,0,.018), 0 14px 34px rgba(0,0,0,.018);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+html{-webkit-text-size-adjust:100%; background:var(--canvas);}
+body{background:var(--canvas);color:var(--ink);overscroll-behavior-y:none;}
+button,input,select,textarea{touch-action:manipulation;}
+button{transition:background-color .18s ease,color .18s ease,transform .18s ease,border-color .18s ease,box-shadow .18s ease;}
+button:active:not(:disabled){transform:scale(.985)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #8f8f95;outline-offset:3px}
+::selection{color:#fff;background:#5c5c61}
+.card{border:1px solid #e9e9ed;border-radius:26px;box-shadow:var(--shadow)}
+.sidebar{background:#fbfbfc;border-right:1px solid #e7e7ea;}
+.brand{color:#1d1d1f;font-weight:760;letter-spacing:-1.15px}
+.brand-mark{background:#1d1d1f;box-shadow:0 4px 14px #0000000e;border-radius:12px;}
+.sidebar-subtitle,.eyebrow{color:#919197;letter-spacing:1.8px}
+.nav-item{color:#79797e;font-size:13px;border-radius:13px;min-height:49px}
+.nav-item:hover{background:#f1f1f3;color:#242426}
+.nav-item.active{background:#e9e9ed;color:#1d1d1f;font-weight:740}
+.nav-item .icon{stroke-width:2}
+.side-privacy,.side-small{color:#86868b}
+.privacy-dot,.secure-dot{background:#7c7c80}
+.topbar{background:rgba(250,250,251,.88);border-bottom:1px solid #eaeaee;backdrop-filter:saturate(1.2) blur(26px);-webkit-backdrop-filter:saturate(1.2) blur(26px)}
+.secure-tag{color:#7a7a80}
+.avatar-button{color:#333337;background:#ededf0;box-shadow:inset 0 0 0 1px #e3e3e7;border:2px solid white}
+.kicker{font-size:12px;color:#7b7b81;font-weight:650;letter-spacing:-.1px}
+.page-title{color:#1d1d1f;font-size:34px;font-weight:785;letter-spacing:-1.5px}
+.page-subtitle{color:#77777d;font-size:13px}
+.date-chip{color:#626269;border-color:#e7e7eb;box-shadow:none}
+.section-mini{color:#98989d;font-weight:760;letter-spacing:1.25px}
+.hero-card{background:#fff;border-color:#eaeaee;min-height:300px}
+.hero-card::before{background:radial-gradient(circle at center,#f4f4f5,transparent 70%)}
+.hero-label{color:#77777c;font-weight:620}
+.hero-number{color:#171719;font-weight:790;letter-spacing:-3.5px}
+.hero-number small,.hero-stats span{color:#95959b}
+.hero-divider{border-color:#ebebef}
+.hero-stats b{color:#222225}
+.ring-track{stroke:#efeff1}
+.ring-fill{stroke:#242426!important}
+.ring-center .icon{color:#424245}
+.ring-percent{color:#242426;font-weight:790}
+.ring-center small{color:#86868c}
+.plan-preview-card{background:linear-gradient(145deg,#222224,#4b4b50 110%);border-color:#343438;color:#fff;box-shadow:0 14px 32px #0000000e}
+.plan-preview-card::after{border-color:#ffffff25;box-shadow:0 0 0 37px #ffffff06,0 0 0 76px #ffffff04}
+.plan-preview-card .section-mini,.tomorrow-desc,.plan-preview-bottom small,.tomorrow-number span{color:#dfdfe2}
+.plan-status{background:#ffffff17;border-color:#ffffff35;color:#fff}
+.light-button{background:#fff;color:#1d1d1f;min-height:44px;border-radius:13px}
+.light-button:hover{background:#f1f1f3}
+.row-title h2,.card-heading h3,.row-title h3{color:#242426;letter-spacing:-.6px}
+.text-link{color:#3f3f43;font-size:12px}
+.text-link:hover{color:#000}
+.macro-card{border-radius:22px}
+.macro-icon,.quick-icon,.insight-symbol,.food-avatar{color:#303034!important;background:#f0f0f2!important}
+.macro-icon.blue,.macro-icon.teal,.macro-icon.orange{color:#39393d!important;background:#f0f0f2!important}
+.macro-name{color:#707077}
+.macro-value{color:#202023;font-weight:770}
+.macro-value small,.macro-caption{color:#99999f}
+.track{background:#ececef;overflow:hidden}
+.track span,.track .blue,.track .teal,.track .orange{background:#39393d!important}
+.track .teal{background:#78787d!important}
+.track .orange{background:#b5b5ba!important}
+.trend-badge,.mini-pill,.demo-label,.complete-mark{background:#efeff1;color:#4a4a4f;border:1px solid #e8e8eb}
+.quick-action{border-radius:17px;border-color:#e9e9ed}
+.quick-action:hover{background:#f8f8f9;border-color:#d8d8de}
+.quick-action .arrow{color:#8b8b92}
+.insight-card,.plan-callout,.notice,.status-block{background:#f0f0f2;border-color:#e5e5e8;color:#54545a}
+.insight-symbol,.plan-callout .icon,.notice .icon{color:#4d4d52}
+.notice.demo-notice{background:#f0f0f2;color:#606066;border-color:#e2e2e6}
+.notice.demo-notice b,.notice.demo-notice button{color:#262629}
+.notice.warning{background:#ededf0;border-color:#d8d8dc;color:#39393d}
+.mini-macro-label span,.info-row span{color:#77777c}
+.info-row b,.stat-large{color:#232326}
+.goal-option{border-color:#e4e4e8;color:#69696f;background:#fff;border-radius:13px;min-height:46px}
+.goal-option.active{border-color:#424245;background:#242426;color:#fff}
+.goal-option:hover:not(.active){background:#f5f5f6;color:#242426}
+.plan-hero{background:linear-gradient(135deg,#242426,#4a4a4e);border:1px solid #37373a;color:white}
+.plan-hero::after{border-color:#ffffff24}
+.plan-hero h2{color:#fff}
+.plan-hero p,.plan-metric small{color:#dcdce0}
+.plan-hero .button{background:#fff;color:#1d1d1f}
+.button.primary{background:#242426;color:white;border-color:#242426}
+.button.primary:hover{background:#404045;border-color:#404045}
+.button.secondary,.button.ghost{color:#35353a;border-color:#e2e2e7;background:#fff}
+.button.secondary:hover,.button.ghost:hover{background:#f4f4f6}
+.button{border-radius:13px;min-height:44px}
+.add-meal-button,.water-controls button{background:#f3f3f5;color:#3c3c41;border-color:#e7e7ea;min-height:44px}
+.add-meal-button:hover,.water-controls button:hover{background:#ebebee}
+.day-pill{border-color:#e7e7ea;background:#fff;color:#66666e}
+.day-pill.active{background:#242426;border-color:#242426;color:white}
+.day-pill.active .weekday,.day-pill.active .day-number{color:#fff}
+.summary-block{background:#f2f2f4;border-color:#ebebed}
+.summary-block strong,.meal-kcal,.food-energy{color:#2c2c30}
+.complete-toggle{border-color:#e1e1e5;color:#505056}
+.complete-toggle.done{background:#ececee;color:#242426;border-color:#d6d6db}
+.complete-toggle .check{border-color:#b5b5ba}
+.complete-toggle.done .check{background:#272729;border-color:#272729;color:white}
+.field label{color:#65656b;font-size:12px}
+.field input,.field select,.field textarea{background:#f6f6f8;border:1px solid #e3e3e7;color:#202023;border-radius:13px;min-height:47px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#77777d;background:#fff}
+.field .hint,.modal .input-caption,.small-print{color:#797980}
+.modal-backdrop{background:rgba(22,22,25,.45);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.modal{box-shadow:0 26px 100px #00000026;border:1px solid #e7e7eb}
+.modal-header,.modal-footer{border-color:#ececef}
+.modal-close{color:#4c4c52;background:#f0f0f2;min-height:40px;min-width:40px}
+.modal-badge,.calorie-preview{background:#efeff1;color:#4c4c51;border-color:#e5e5e7}
+.toast{background:#242426;color:#fff;box-shadow:0 15px 40px #00000020}
+.toast .icon{color:#fff}
+:where(.icon-button,.quick-action,.nav-item,.bottom-item,.water-controls button,.add-meal-button,.day-pill){-webkit-tap-highlight-color:transparent}
+:where(.icon-button,.day-pill,.modal-close){min-width:44px;min-height:44px}
+.screen-content{animation:screen-reveal .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes screen-reveal{from{opacity:.65;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media (max-width:850px){
+ .topbar{min-height:calc(65px + env(safe-area-inset-top));height:calc(65px + env(safe-area-inset-top));padding-top:env(safe-area-inset-top);background:rgba(250,250,251,.91);border-bottom:1px solid #e8e8eb}
+ .main-content{padding-bottom:calc(105px + env(safe-area-inset-bottom));}
+ .bottom-nav{height:calc(66px + env(safe-area-inset-bottom));padding-bottom:calc(5px + env(safe-area-inset-bottom));background:rgba(251,251,252,.92);border-color:#e5e5e8;box-shadow:0 -5px 28px #00000008;-webkit-backdrop-filter:blur(28px);backdrop-filter:blur(28px)}
+ .bottom-item{color:#9a9aa0;gap:4px;font-size:10px;min-height:46px}
+ .bottom-item.active{color:#1d1d1f}
+ .bottom-item.active .icon{stroke-width:2.4}
+ .toast-stack{bottom:calc(78px + env(safe-area-inset-bottom))}
+}
+@media(max-width:620px){
+ .page-title{font-size:30px;line-height:1.08;letter-spacing:-1.25px}
+ .page-subtitle{font-size:12.5px;line-height:1.6}
+ .hero-card{min-height:254px}
+ .hero-number{font-size:51px;letter-spacing:-2.5px}
+ .hero-ring{width:172px;height:172px}
+ .plan-preview-card{min-height:228px}
+ .card{border-radius:23px}
+ .macro-card{border-radius:19px}
+ .macro-value small{white-space:nowrap}
+ .modal{max-height:calc(100dvh - env(safe-area-inset-top) - 10px);border-radius:26px 26px 0 0;padding-bottom:env(safe-area-inset-bottom);border-bottom:0}
+ .modal-body{padding:17px 20px;max-height:65dvh}
+ .modal-header{padding:20px 20px 16px}
+ .modal-footer{padding:12px 20px 15px}
+ .field input,.field select,.field textarea{font-size:16px} /* avoids automatic focus zoom in mobile Safari */
+ .plan-hero{border-radius:24px}
+ .head-row{align-items:flex-start}
+ .head-row>.right-actions{justify-content:flex-end}
+}
+@media(max-width:380px){
+ .page-title{font-size:27px}
+ .hero-ring{width:132px;height:132px}
+ .hero-card{padding:20px 14px}
+ .hero-number{font-size:40px}
+ .hero-stats b{font-size:15px}
+ .macro-value{font-size:19px}
+ .macro-card{padding:14px 10px}
+ .macro-value small{font-size:9px}
+ .macro-caption{font-size:9px}
+ .plan-metrics{gap:17px}
+}
+@media(prefers-reduced-motion:reduce){.screen-content{animation:none}button:active:not(:disabled){transform:none}}
+
+/* Long native option labels fit without clipping in the iPhone profile sheet. */
+#modal-form .field:has(#activity){grid-column:1/-1}
+#modal-form .field:has(#activity) select{width:100%}
+
+
+/* Initial HTML never renders blank: if scripts do not run, this preview stays visible. */
+.preview-fallback{background:#f0f0f2;color:#303034;border:1px solid #e0e0e4;border-radius:17px;padding:15px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:18px;font-size:12px;line-height:1.6;box-shadow:0 4px 18px #00000008}
+.preview-fallback svg{flex:0 0 auto;margin-top:2px}
+.preview-fallback strong{display:block;font-size:13px;letter-spacing:-.1px;margin-bottom:2px;color:#1d1d1f}
+.preview-fallback p{margin:0;color:#66666b}
+.preview-fallback a{font-weight:750;text-decoration:underline;color:#262629;text-underline-offset:3px}
+html.metria-live .preview-fallback{display:none}
+@media(max-width:620px){.preview-fallback{padding:13px 14px;border-radius:15px;margin-bottom:15px}}
+
+</style>
+  <title>Metria — Nutrition & weight intelligence</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand brand-large"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Metria</span></div>
+      <div class="sidebar-subtitle">PERSONAL NUTRITION</div>
+      <nav class="side-nav" id="desktop-nav"><button class="nav-item active" data-tab="home" aria-current="page"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Z"></path><path d="M9 21v-8h6v8"></path></svg> Overview</button><button class="nav-item " data-tab="log" aria-current="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"></path><path d="M3 18V4a1 1 0 0 1 1-1h4a4 4 0 0 1 4 4 4 4 0 0 1 4-4h4a1 1 0 0 1 1 1v14h-5a4 4 0 0 0-4 3 4 4 0 0 0-4-3H3Z"></path></svg> Food diary</button><button class="nav-item " data-tab="trends" aria-current="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"></path><path d="m7 16 5-5 4 3 5-7"></path><path d="M17 7h4v4"></path></svg> Weight trends</button><button class="nav-item " data-tab="plan" aria-current="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h9m4 0h3M4 17h3m4 0h9"></path><circle cx="15" cy="7" r="2"></circle><circle cx="9" cy="17" r="2"></circle></svg> My plan</button><div class="nav-divider"></div><button class="nav-item " data-tab="settings" aria-current="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 1 0 0-8Z"></path><path d="m19.4 15 .15.18 1.16.9-1.4 2.4-1.4-.55a8.4 8.4 0 0 1-1.82 1.05l-.22 1.48h-2.8l-.23-1.48a8.4 8.4 0 0 1-1.81-1.05l-1.4.55-1.4-2.4 1.15-.9a8.4 8.4 0 0 1 0-2.1l-1.15-.9 1.4-2.4 1.4.54a8.4 8.4 0 0 1 1.81-1.04l.23-1.48h2.8l.22 1.48a8.4 8.4 0 0 1 1.82 1.04l1.4-.54 1.4 2.4-1.16.9a8.4 8.4 0 0 1 0 2.1Z" transform="translate(-2 -2)"></path></svg> Settings</button></nav>
+      <div class="sidebar-bottom"><div class="side-privacy"><span class="privacy-dot"></span> Private by design</div><div class="side-small">Your entries stay in this browser.</div></div>
+    </aside>
+    <div class="content-area">
+      <header class="topbar">
+        <div class="brand mobile-brand"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Metria</span></div>
+        <div class="topbar-left"><span class="eyebrow" id="topbar-label">YOUR DAILY OVERVIEW</span></div>
+        <div class="topbar-right"><span class="secure-tag" title="Saved locally on this device"><span class="secure-dot"></span> On-device</span><button id="profile-trigger" class="avatar-button" data-action="settings" aria-label="Open settings">M</button></div>
+      </header>
+      <main id="app-content" class="main-content" tabindex="-1"><div class="preview-fallback" role="status"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5h.01"/></svg><div><strong>Preview mode · design visible, tracking paused</strong><p>This iPhone file viewer doesn't run interactive website scripts. For working food logs, weight entries and automatic targets, open the published app in Safari. Visit the hosted site in Safari and ensure JavaScript is enabled.</p></div></div><div class="screen-content"><div class="head-row"><div><p class="kicker">Happy Friday, Alex · November 6</p><h1 class="page-title">Your daily balance <span class="demo-label">DEMO</span></h1><p class="page-subtitle">A clearer view of your nutrition, one day at a time.</p></div><div class="date-chip"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg> Today</div></div><div class="notice demo-notice"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 11v6M12 7h.01"></path></svg><div><b>You're exploring sample data.</b> All weights and meals shown here are fictional. <button data-action="start-personal">Start your own plan</button> to clear the samples and track your real progress.</div></div>
+    <div class="grid-top"><section class="card hero-card"><div class="hero-copy"><div class="hero-label">Calories remaining</div><div class="hero-number">1,255<small>kcal</small></div><hr class="hero-divider"><div class="hero-stats"><div><span>Eaten</span><b>1,245</b></div><div><span>Daily goal</span><b>2,500</b></div></div></div><div class="hero-ring"><svg viewBox="0 0 200 200" role="img" aria-label="50 percent of today's calorie goal consumed"><circle class="ring-track" cx="100" cy="100" r="80"></circle><circle class="ring-fill" cx="100" cy="100" r="80" stroke="#272729" stroke-dasharray="502.6548245743669" stroke-dashoffset="251.32741228718345"></circle></svg><div class="ring-center"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4.4 0 7-3 7-7 0-4-3-6-4-7 .4 4-2 5-2 5-.5-4-4-6-4-10-3 4-4 8-4 12 0 4 2.7 7 7 7Z"></path></svg><div class="ring-percent">50%</div><small>consumed</small></div></div></section>
+    <section class="card plan-preview-card"><div class="plan-preview-top"><span class="section-mini">Tomorrow's target</span><span class="plan-status"><svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3ZM19 17l.7 2.3L22 20l-2.3.7L19 23l-.7-2.3L16 20l2.3-.7L19 17ZM4 2l.7 2.3L7 5l-2.3.7L4 8l-.7-2.3L1 5l2.3-.7L4 2Z"></path></svg> Trend-informed</span></div><div class="plan-preview-body"><div class="tomorrow-number">2,450 <span>kcal</span></div><p class="tomorrow-desc">A measured 50 kcal decrease as your longer-term data evolves.</p></div><div class="plan-preview-bottom"><small>-50 kcal vs. today</small><button class="light-button" data-tab="plan">View plan <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button></div></section></div>
+    <div class="row-title"><h2>Today's macros</h2><button class="text-link" data-tab="log">View food diary <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button></div>
+    <div class="macro-grid"><div class="card macro-card"><div class="macro-top"><span class="macro-icon blue"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></span><span class="macro-name">Protein</span></div><div class="macro-value">100 <small>/ 149 g</small></div><div class="track"><span class="blue" style="width:67.11409395973155%"></span></div><div class="macro-caption">49 g remaining today</div></div><div class="card macro-card"><div class="macro-top"><span class="macro-icon teal"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V8M8 17l4 4 4-4M7 10l5 5 5-5M8 4c2 1 4 2 4 5 0-3 2-4 4-5"></path></svg></span><span class="macro-name">Carbs</span></div><div class="macro-value">150 <small>/ 334 g</small></div><div class="track"><span class="teal" style="width:44.91017964071856%"></span></div><div class="macro-caption">184 g remaining today</div></div><div class="card macro-card"><div class="macro-top"><span class="macro-icon orange"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2-6 8a7.2 7.2 0 0 0 12 8.2A7.2 7.2 0 0 0 18 10l-6-8Z"></path></svg></span><span class="macro-name">Fat</span></div><div class="macro-value">29 <small>/ 63 g</small></div><div class="track"><span class="orange" style="width:46.03174603174603%"></span></div><div class="macro-caption">34 g remaining today</div></div></div>
+    <div class="lower-grid"><section class="card metric-card"><div class="card-heading"><div><h3>Weight trend</h3><p>Recent morning weigh-ins</p></div><span class="trend-badge"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 17-8-8-4 4-8-8"></path><path d="M16 17h6v-6"></path></svg> -0.37 kg/wk</span></div><div class="stat-large">78.2 <small>kg</small></div><div class="chart-wrapper"><svg viewBox="0 0 650 195" role="img" aria-label="Logged weight measurements and seven-day smoothed trend" preserveAspectRatio="none"><defs><linearGradient id="trend-small-grad" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9a9a9d" stop-opacity=".15"></stop><stop offset="1" stop-color="#9a9a9d" stop-opacity="0"></stop></linearGradient></defs><line x1="8" x2="642" y1="26.2" y2="26.2" stroke="#eef1f7" stroke-dasharray="4 6"></line><line x1="8" x2="642" y1="100.0" y2="100.0" stroke="#eef1f7" stroke-dasharray="4 6"></line><line x1="8" x2="642" y1="173.8" y2="173.8" stroke="#eef1f7" stroke-dasharray="4 6"></line><path d="M8.0,60.1 L71.4,60.1 L103.1,65.8 L134.8,82.9 L166.5,82.9 L198.2,82.9 L229.9,94.3 L293.3,100.0 L325.0,105.7 L356.7,105.7 L388.4,111.4 L451.8,134.2 L483.5,145.6 L515.2,145.6 L546.9,151.3 L578.6,145.6 L610.3,151.3 L642.0,151.3 L642.0,182 L8.0,182 Z" fill="url(#trend-small-grad)"></path><path d="M8.0,48.7 L71.4,60.1 L103.1,60.1 L134.8,105.7 L166.5,94.3 L198.2,71.5 L229.9,105.7 L293.3,71.5 L325.0,94.3 L356.7,117.1 L388.4,105.7 L451.8,151.3 L483.5,139.9 L515.2,128.5 L546.9,151.3 L578.6,151.3 L610.3,128.5 L642.0,151.3" fill="none" stroke="#c1c1c5" stroke-width="1.8" stroke-dasharray="4 5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.0,60.1 L71.4,60.1 L103.1,65.8 L134.8,82.9 L166.5,82.9 L198.2,82.9 L229.9,94.3 L293.3,100.0 L325.0,105.7 L356.7,105.7 L388.4,111.4 L451.8,134.2 L483.5,145.6 L515.2,145.6 L546.9,151.3 L578.6,145.6 L610.3,151.3 L642.0,151.3" fill="none" stroke="#29292b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="642" cy="151.2500000000001" r="4.5" fill="#272729" stroke="white" stroke-width="3"></circle></svg></div><div class="axis-bottom"><span>3 weeks ago</span><span>Today</span></div></section>
+    <section class="card metric-card"><div class="card-heading"><div><h3>Quick actions</h3><p>Keep your daily record current</p></div></div><div class="quick-list">
+    <button class="quick-action" data-modal="food"><span class="quick-icon blue"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span><span><strong>Log a meal</strong><small>Add calories and macros</small></span><svg class="icon arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button>
+    <button class="quick-action" data-modal="weight"><span class="quick-icon orange"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="3"></rect><path d="M8 9a4 4 0 0 1 8 0M12 9l2-2"></path></svg></span><span><strong>Record weight</strong><small>Consistent morning weigh-ins</small></span><svg class="icon arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button>
+    <button class="quick-action" data-modal="daily"><span class="quick-icon teal"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 2 2 3-3M11 8h10m-18 8 2 2 3-3m3 1h10"></path></svg></span><span><strong>Log daily totals</strong><small>Already track food elsewhere?</small></span><svg class="icon arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button></div></section></div>
+    <div class="insight-card"><div class="insight-symbol"><svg class="icon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3ZM19 17l.7 2.3L22 20l-2.3.7L19 23l-.7-2.3L16 20l2.3-.7L19 17ZM4 2l.7 2.3L7 5l-2.3.7L4 8l-.7-2.3L1 5l2.3-.7L4 2Z"></path></svg></div><div><h3>Your estimate now uses your actual trends</h3><p>Using 25 completed food days and 25 weigh-ins over the recent observation window. Numbers are estimates, not measurements of your metabolism.</p></div></div></div></main>
+    </div>
+    <nav class="bottom-nav" id="mobile-nav" aria-label="Bottom navigation"><button class="bottom-item active" data-tab="home" aria-current="page"><svg class="icon" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Z"></path><path d="M9 21v-8h6v8"></path></svg><span>Home</span></button><button class="bottom-item " data-tab="log" aria-current="false"><svg class="icon" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"></path><path d="M3 18V4a1 1 0 0 1 1-1h4a4 4 0 0 1 4 4 4 4 0 0 1 4-4h4a1 1 0 0 1 1 1v14h-5a4 4 0 0 0-4 3 4 4 0 0 0-4-3H3Z"></path></svg><span>Diary</span></button><button class="bottom-item " data-tab="trends" aria-current="false"><svg class="icon" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"></path><path d="m7 16 5-5 4 3 5-7"></path><path d="M17 7h4v4"></path></svg><span>Trends</span></button><button class="bottom-item " data-tab="plan" aria-current="false"><svg class="icon" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h9m4 0h3M4 17h3m4 0h9"></path><circle cx="15" cy="7" r="2"></circle><circle cx="9" cy="17" r="2"></circle></svg><span>Plan</span></button></nav>
+  </div>
+  <div id="modal-root"></div>
+  <div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="true"></div>
+  <script>
+/* METRIA · An offline-first, local-only nutrition journal.
+   This is educational planning software, not medical advice. All recommendations are estimates. */
+(() => {
+  'use strict';
+  const STORAGE_KEY = 'metria.app.v1';
+  const VERSION = 1;
+  const MS_DAY = 86400000;
+  const navItems = [
+    ['home', 'Overview', 'house'], ['log', 'Food diary', 'book-open'],
+    ['trends', 'Weight trends', 'chart-no-axes-combined'], ['plan', 'My plan', 'sliders-horizontal'],
+    ['settings', 'Settings', 'settings']
+  ];
+  const meals = ['Breakfast', 'Lunch', 'Dinner', 'Snacks'];
+  const iconPaths = {
+    'house': '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Z"/><path d="M9 21v-8h6v8"/>',
+    'book-open': '<path d="M12 7v14"/><path d="M3 18V4a1 1 0 0 1 1-1h4a4 4 0 0 1 4 4 4 4 0 0 1 4-4h4a1 1 0 0 1 1 1v14h-5a4 4 0 0 0-4 3 4 4 0 0 0-4-3H3Z"/>',
+    'chart-no-axes-combined': '<path d="M3 3v18h18"/><path d="m7 16 5-5 4 3 5-7"/><path d="M17 7h4v4"/>',
+    'sliders-horizontal':'<path d="M4 7h9m4 0h3M4 17h3m4 0h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>',
+    'settings':'<path d="M12 8a4 4 0 1 0 0 8 4 4 0 1 0 0-8Z"/><path d="m19.4 15 .15.18 1.16.9-1.4 2.4-1.4-.55a8.4 8.4 0 0 1-1.82 1.05l-.22 1.48h-2.8l-.23-1.48a8.4 8.4 0 0 1-1.81-1.05l-1.4.55-1.4-2.4 1.15-.9a8.4 8.4 0 0 1 0-2.1l-1.15-.9 1.4-2.4 1.4.54a8.4 8.4 0 0 1 1.81-1.04l.23-1.48h2.8l.22 1.48a8.4 8.4 0 0 1 1.82 1.04l1.4-.54 1.4 2.4-1.16.9a8.4 8.4 0 0 1 0 2.1Z" transform="translate(-2 -2)"/>',
+    'calendar-days':'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>',
+    'arrow-up-right':'<path d="M7 17 17 7M8 7h9v9"/>','arrow-right':'<path d="M5 12h14m-6-6 6 6-6 6"/>',
+    'plus':'<path d="M12 5v14M5 12h14"/>','minus':'<path d="M5 12h14"/>',
+    'check':'<path d="m5 12 4 4L19 6"/>','x':'<path d="M18 6 6 18M6 6l12 12"/>',
+    'trending-down':'<path d="m22 17-8-8-4 4-8-8"/><path d="M16 17h6v-6"/>',
+    'trending-up':'<path d="m22 7-8 8-4-4-8 8"/><path d="M16 7h6v6"/>',
+    'activity':'<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',
+    'scale':'<rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 9a4 4 0 0 1 8 0M12 9l2-2"/>',
+    'flame':'<path d="M12 22c4.4 0 7-3 7-7 0-4-3-6-4-7 .4 4-2 5-2 5-.5-4-4-6-4-10-3 4-4 8-4 12 0 4 2.7 7 7 7Z"/>',
+    'droplets':'<path d="m12 2-6 8a7.2 7.2 0 0 0 12 8.2A7.2 7.2 0 0 0 18 10l-6-8Z"/>',
+    'utensils':'<path d="M4 3v7a3 3 0 0 0 6 0V3M7 3v18M19 21V3c-3 3-4 6-4 11h4"/>',
+    'wheat':'<path d="M12 22V8M8 17l4 4 4-4M7 10l5 5 5-5M8 4c2 1 4 2 4 5 0-3 2-4 4-5"/>',
+    'sparkles':'<path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3ZM19 17l.7 2.3L22 20l-2.3.7L19 23l-.7-2.3L16 20l2.3-.7L19 17ZM4 2l.7 2.3L7 5l-2.3.7L4 8l-.7-2.3L1 5l2.3-.7L4 2Z"/>',
+    'shield-check':'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>',
+    'circle-help':'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 0 1 5 0c0 2-2.5 2.5-2.5 4M12 17h.01"/>',
+    'lock-keyhole':'<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/>',
+    'download':'<path d="M12 3v12m-4-4 4 4 4-4M4 17v4h16v-4"/>',
+    'upload':'<path d="M12 16V4m-4 4 4-4 4 4M4 17v4h16v-4"/>',
+    'trash-2':'<path d="M3 6h18M8 6V4h8v2m3 0-1 15H6L5 6M10 10v7m4-7v7"/>',
+    'pencil':'<path d="m4 20 4.5-1 11-11a2 2 0 0 0-3-3l-11 11L4 20ZM15 7l3 3"/>',
+    'info':'<circle cx="12" cy="12" r="10"/><path d="M12 11v6M12 7h.01"/>',
+    'chevron-right':'<path d="m9 18 6-6-6-6"/>','clock-3':'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    'moon-star':'<path d="M20 13a8 8 0 0 1-9-9 8 8 0 1 0 9 9ZM19 2v4M17 4h4"/>',
+    'sun':'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+    'target':'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+    'apple':'<path d="M12 7c-1-2-3-3-5-2-4 2-3 8 0 12 2 3 3 4 5 2 2 2 3 1 5-2 3-4 4-10 0-12-2-1-4 0-5 2Zm0 0c0-3 1-5 4-5"/>',
+    'refresh-cw':'<path d="M20 11a8 8 0 1 0-2 6M20 4v7h-7"/>',
+    'list-checks':'<path d="m3 7 2 2 3-3M11 8h10m-18 8 2 2 3-3m3 1h10"/>',
+    'footprints':'<path d="M9 19c-5 0-5-5-1-5 4 0 4 5 1 5ZM17 11c-5 0-5-5-1-5 4 0 4 5 1 5ZM7 4v3M4 6v3m11 8v3m4-5v3"/>',
+  };
+  const icon = (key, size = 18) => `<svg class="icon" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconPaths[key] || iconPaths.info}</svg>`;
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+  const round25 = (n) => Math.round(n / 25) * 25;
+  const fmt = (x, precision = 0) => Number(x || 0).toLocaleString('en-US', {minimumFractionDigits: precision, maximumFractionDigits: precision});
+  const dayKey = (d = new Date()) => [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+  const parseDay = k => { const [y,m,d] = k.split('-').map(Number); return new Date(y,m-1,d,12); };
+  const moveDay = (k, delta) => { const d = parseDay(k); d.setDate(d.getDate()+delta); return dayKey(d); };
+  const diffDays = (a,b) => Math.round((Date.UTC(...a.split('-').map((v,i) => i===1?Number(v)-1:Number(v))) - Date.UTC(...b.split('-').map((v,i) => i===1?Number(v)-1:Number(v)))) / MS_DAY);
+  const longDate = (d, opts={weekday:'long',month:'long',day:'numeric'}) => parseDay(d).toLocaleDateString('en-US',opts);
+  const median = arr => {const a=[...arr].sort((a,b)=>a-b); return a.length ? a[Math.floor((a.length-1)/2)]*(1-(a.length%2===0?.5:0))+(a.length%2===0?a[a.length/2]*.5:0) : 0;};
+  const average = arr => arr.length ? arr.reduce((a,b)=>a+b,0)/arr.length : 0;
+  let view = ['home','log','trends','plan','settings'].includes(location.hash.slice(1)) ? location.hash.slice(1) : 'home';
+  let selectedDate = dayKey();
+  let modal = '';
+  let priorFocus = null;
+  let state;
+  let storageWorks = false;
+  try { const probe = '__metria_storage_probe__'; localStorage.setItem(probe,'1'); storageWorks = localStorage.getItem(probe)==='1'; localStorage.removeItem(probe); } catch(_) { storageWorks=false; }
+
+  const sampleFood = [
+    ['Protein oats', 'Breakfast', 525, 39, 65, 13],
+    ['Chicken rice bowl', 'Lunch', 720, 61, 85, 16],
+    ['Salmon & potatoes', 'Dinner', 772, 53, 72, 30],
+    ['Yogurt & nuts', 'Snacks', 285, 21, 24, 13]
+  ];
+  function newDemo() {
+    const today=dayKey();
+    const profile={name:'Alex',sex:'male',age:27,height:179,weight:78.2,activity:'moderate',goal:'cut',pace:'gentle',proteinFactor:1.9,fatFactor:0.8,manualMaintenance:null};
+    const logs={}; const weights=[];
+    for(let i=28;i>=1;i--){
+      const date=moveDay(today,-i); const n=28-i;
+      if (i!==19 && i!==12 && i!==7) {
+        const kg=79.35-(n*.042)+(Math.sin(i*1.9)*.16)+(Math.cos(i*.61)*.08);
+        weights.push({date,kg:Math.round(kg*10)/10});
+      }
+      if (i===22 || i===9) continue;
+      const factor=1+Math.sin(i*1.7)*.058;
+      const foods=sampleFood.map((f,j)=>({id:`demo-${i}-${j}`,name:f[0],meal:f[1],calories:Math.round(f[2]*factor),protein:Math.round(f[3]*factor),carbs:Math.round(f[4]*factor),fat:Math.round(f[5]*factor)}));
+      logs[date]={foods,water:1700+((i%5)*250),steps:7200+(i%8)*970,complete:true};
+    }
+    weights.push({date:today,kg:78.2});
+    logs[today]={foods:[{id:'demo-today-0',name:'Protein oats',meal:'Breakfast',calories:525,protein:39,carbs:65,fat:13},{id:'demo-today-1',name:'Chicken rice bowl',meal:'Lunch',calories:720,protein:61,carbs:85,fat:16}],water:1250,steps:6850,complete:false};
+    return {version:VERSION,mode:'demo',profile,logs,weights,plan:{activeTarget:2500,lastUpdated:today,history:[{date:today,target:2500}]}};
+  }
+  function validDate(k) { return typeof k==='string' && /^\d{4}-\d{2}-\d{2}$/.test(k) && dayKey(parseDay(k))===k; }
+  function sanitizeImport(obj) {
+    if (!obj || typeof obj!=='object' || !obj.profile || !obj.logs || !Array.isArray(obj.weights)) throw Error('The file is not a valid Metria backup.');
+    const p=obj.profile; const sex=['male','female','other'].includes(p.sex)?p.sex:'other';
+    const number=(v,min,max,defaultVal)=>Number.isFinite(Number(v))?clamp(Number(v),min,max):defaultVal;
+    const profile={name:String(p.name||'You').slice(0,35),sex,age:number(p.age,18,100,25),height:number(p.height,120,230,170),weight:number(p.weight,35,300,75),activity:['sedentary','light','moderate','active','very'].includes(p.activity)?p.activity:'light',goal:['maintain','cut','gain'].includes(p.goal)?p.goal:'maintain',pace:['gentle','steady'].includes(p.pace)?p.pace:'gentle',proteinFactor:number(p.proteinFactor,1.2,2.2,1.8),fatFactor:number(p.fatFactor,.6,1.2,.8),manualMaintenance:p.manualMaintenance == null ? null : number(p.manualMaintenance,1200,5500,null)};
+    const logs={};
+    for (const [k,v] of Object.entries(obj.logs).slice(0,2000)) {
+      if(!validDate(k)||!v||typeof v!=='object')continue;
+      logs[k]={foods:(Array.isArray(v.foods)?v.foods:[]).slice(0,150).map((f,i)=>({id:String(f.id||`${k}-${i}`).slice(0,80),name:String(f.name||'Food').slice(0,90),meal:meals.includes(f.meal)?f.meal:'Snacks',calories:number(f.calories,0,10000,0),protein:number(f.protein,0,1200,0),carbs:number(f.carbs,0,1500,0),fat:number(f.fat,0,1000,0)})),water:number(v.water,0,12000,0),steps:number(v.steps,0,150000,0),complete:!!v.complete};
+    }
+    const weights=[...new Map(obj.weights.filter(w=>w&&validDate(w.date)&&Number.isFinite(Number(w.kg))&&Number(w.kg)>=35&&Number(w.kg)<=300).slice(-2000).map(w=>[w.date,{date:w.date,kg:Number(w.kg)}])).values()].sort((a,b)=>a.date.localeCompare(b.date));
+    const plan=obj.plan && Number.isFinite(Number(obj.plan.activeTarget)) && validDate(obj.plan.lastUpdated) ? {activeTarget:clamp(Number(obj.plan.activeTarget),1200,5500),lastUpdated:obj.plan.lastUpdated,history:Array.isArray(obj.plan.history)?obj.plan.history.filter(h=>h&&validDate(h.date)&&Number.isFinite(Number(h.target))).slice(-365).map(h=>({date:h.date,target:clamp(Number(h.target),1200,5500)})):[]} : null;
+    return {version:VERSION,mode:obj.mode==='demo'?'demo':'personal',profile,logs,weights,plan};
+  }
+  function load(){ try {const raw=localStorage.getItem(STORAGE_KEY);if(raw)return sanitizeImport(JSON.parse(raw));}catch(e){console.warn('Metria data could not be read',e);}return newDemo(); }
+  function save(){if(!storageWorks)return;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){storageWorks=false;toast('Storage unavailable. Export your data before closing.',true);}}
+  function logFor(date,create=false){ if(!state.logs[date]&&create) state.logs[date]={foods:[],water:0,steps:0,complete:false}; return state.logs[date] || {foods:[],water:0,steps:0,complete:false}; }
+  function totals(date){const l=logFor(date); return l.foods.reduce((a,f)=>({calories:a.calories+f.calories,protein:a.protein+f.protein,carbs:a.carbs+f.carbs,fat:a.fat+f.fat}),{calories:0,protein:0,carbs:0,fat:0});}
+  function getWeights(){return [...state.weights].sort((a,b)=>a.date.localeCompare(b.date));}
+  function latestWeight(){let ws=getWeights().filter(w=>w.date<=dayKey());return ws.length?ws[ws.length-1].kg:state.profile.weight;}
+  function currentWeight(){return latestWeight();}
+  function getBmr(){const p=state.profile; const standard=10*currentWeight()+6.25*p.height-5*p.age;return standard+(p.sex==='male'?5:p.sex==='female'?-161:-78);}
+  function calculateEngine(){
+    const p=state.profile, weight=currentWeight(), bmi=weight/((p.height/100)**2);
+    const factor={sedentary:1.2,light:1.375,moderate:1.55,active:1.725,very:1.9}[p.activity]||1.375;
+    const bmr=getBmr(); const baseline=p.manualMaintenance==null ? bmr*factor : Number(p.manualMaintenance);
+    const today=dayKey();const minDate=moveDay(today,-27);
+    const completed=Object.keys(state.logs).filter(k=>k>=minDate&&k<today&&state.logs[k].complete&&totals(k).calories>0).sort();
+    const weights=getWeights().filter(w=>w.date>=minDate&&w.date<=today);
+    const allDates=[...completed,...weights.map(w=>w.date)].sort();
+    const span=allDates.length ? diffDays(today,allDates[0])+1 : 0;
+    const weightSpan=weights.length>1?diffDays(weights[weights.length-1].date,weights[0].date):0;
+    const coverage=span?completed.length/span:0;
+    const freshFoods=completed.filter(k=>k>=moveDay(today,-6)).length;
+    const freshWeights=weights.filter(w=>w.date>=moveDay(today,-6)).length;
+    const usable=span>=14 && completed.length>=12 && coverage>=.68 && weights.length>=10 && weightSpan>=12 && freshFoods>=2 && freshWeights>=2;
+    let weightSlope=0,observedTdee=null,effective=baseline,alpha=0,quality='Getting started';
+    if(usable){
+      const slopes=[];
+      for(let i=0;i<weights.length;i++)for(let j=i+1;j<weights.length;j++){
+        const days=diffDays(weights[j].date,weights[i].date);
+        if(days>=7)slopes.push((weights[j].kg-weights[i].kg)/days);
+      }
+      weightSlope=median(slopes);
+      const avgCalories=average(completed.map(d=>totals(d).calories));
+      observedTdee=avgCalories-weightSlope*7700;
+      const plausible=observedTdee>baseline*.6 && observedTdee<baseline*1.45 && observedTdee>1200 && observedTdee<5500;
+      if(plausible){alpha=clamp(.42+(Math.min(span,28)-14)*.023,.42,.74);effective=baseline*(1-alpha)+observedTdee*alpha;quality=span>=21&&completed.length>=18&&weights.length>=17?'Trend-informed':'Learning';}
+      else {observedTdee=null;quality='Needs more consistent data';}
+    }
+    let delta=0,protectedCut=false;
+    const floor=p.sex==='male'?1800:p.sex==='female'?1500:1650;
+    if(p.goal==='cut'){
+      if(bmi<20){protectedCut=true;delta=0;}
+      else {const weeklyFrac=p.pace==='steady'?.004:.0025;delta=-Math.min(500,effective*.2,weight*weeklyFrac*7700/7);}
+    } else if(p.goal==='gain'){
+      delta= Math.min(p.pace==='steady'?300:180,effective*.14);
+    }
+    const target=round25(clamp(effective+delta,p.goal==='cut'?floor:1200,5500));
+    const safeTarget=p.goal==='cut'&&!protectedCut?Math.max(target,floor):target;
+    return {bmr,baseline,effective,observedTdee,alpha,calibrated:!!observedTdee,quality,span,coverage,completed:completed.length,weighDays:weights.length,weightSpan,weightSlope,weight,bmi,protectedCut,desiredTarget:round25(safeTarget),adjustment:delta};
+  }
+  function ensurePlanForToday(){
+    const today=dayKey(),e=calculateEngine();
+    if(!state.plan || !Number.isFinite(Number(state.plan.activeTarget))){state.plan={activeTarget:e.desiredTarget,lastUpdated:today,history:[{date:today,target:e.desiredTarget}]};save();return;}
+    // A low-BMI safety check overrides the normal gradual adjustment limit.
+    if(e.protectedCut && state.plan.activeTarget<e.desiredTarget){
+      state.plan.activeTarget=e.desiredTarget;
+      state.plan.lastUpdated=today;
+      state.plan.history.push({date:today,target:e.desiredTarget});
+      state.plan.history=state.plan.history.slice(-365);
+      save();return;
+    }
+    const days=diffDays(today,state.plan.lastUpdated);
+    if(days>0){
+      const weekly=state.plan.history.filter(h=>diffDays(today,h.date)<=7 && diffDays(today,h.date)>=0).sort((a,b)=>a.date.localeCompare(b.date));
+      const reference=weekly.length?weekly[0].target:state.plan.activeTarget;
+      // Missing or stale records are not evidence for a new adjustment.
+      const intended=e.calibrated?clamp(e.desiredTarget-state.plan.activeTarget,-Math.min(50*days,150),Math.min(50*days,150)):0;
+      let next=round25(state.plan.activeTarget+intended);
+      next=clamp(next,reference-150,reference+150);
+      state.plan.activeTarget=next;
+      state.plan.lastUpdated=today;
+      state.plan.history.push({date:today,target:next});
+      state.plan.history=state.plan.history.slice(-365);
+      save();
+    }
+  }
+  function resetPlan(){state.plan=null;ensurePlanForToday();}
+  function targetsFor(calories){let protein=Math.round(currentWeight()*state.profile.proteinFactor),fat=Math.round(currentWeight()*state.profile.fatFactor);let carbs=Math.round((calories-protein*4-fat*9)/4);if(carbs<50){fat=Math.max(30,Math.round((calories-protein*4-200)/9));carbs=Math.round((calories-protein*4-fat*9)/4);}return {calories,protein,carbs:Math.max(0,carbs),fat};}
+  function getTomorrow(){const e=calculateEngine(),current=state.plan.activeTarget;let difference=e.desiredTarget-current;
+    if(!e.calibrated && state.profile.manualMaintenance===null)difference=0;
+    let tomorrow=round25(current+clamp(difference,-50,50));
+    const today=dayKey();const recent=state.plan.history.filter(h=>diffDays(today,h.date)>=0&&diffDays(today,h.date)<7).sort((a,b)=>a.date.localeCompare(b.date));
+    const anchor=recent.length?recent[0].target:current;
+    tomorrow=clamp(tomorrow,anchor-150,anchor+150);
+    return {calories:tomorrow,change:tomorrow-current,engine:e};
+  }
+  const macroCard=(kind,label,value,target,color,iconName)=>`<div class="card macro-card"><div class="macro-top"><span class="macro-icon ${color}">${icon(iconName)}</span><span class="macro-name">${label}</span></div><div class="macro-value">${fmt(value)} <small>/ ${fmt(target)} g</small></div><div class="track"><span class="${color}" style="width:${clamp(target?value/target*100:0,0,100)}%"></span></div><div class="macro-caption">${fmt(Math.max(0,target-value))} g remaining today</div></div>`;
+  const tagDemo=()=>state.mode==='demo'?'<span class="demo-label">DEMO</span>':'';
+  function demoNotice(){return !storageWorks?`<div class="notice demo-notice">${icon('info')}<div><b>Preview only — changes won't be saved.</b> This viewer blocks browser storage. Open the app on a normal HTTPS website in Safari to track progress reliably. You can still explore the interface.</div></div>`:state.mode==='demo'?`<div class="notice demo-notice">${icon('info')}<div><b>You're exploring sample data.</b> All weights and meals shown here are fictional. <button data-action="start-personal">Start your own plan</button> to clear the samples and track your real progress.</div></div>`:'';}
+  function pageHeading(kicker,title,sub='',actions=''){return `<div class="head-row"><div><p class="kicker">${kicker}</p><h1 class="page-title">${title} ${tagDemo()}</h1>${sub?`<p class="page-subtitle">${sub}</p>`:''}</div>${actions}</div>`;}
+  function ring(percent){const r=80,circ=2*Math.PI*r;return `<div class="hero-ring"><svg viewBox="0 0 200 200" role="img" aria-label="${Math.round(percent)} percent of today's calorie goal consumed"><circle class="ring-track" cx="100" cy="100" r="80"/><circle class="ring-fill" cx="100" cy="100" r="80" stroke="#272729" stroke-dasharray="${circ}" stroke-dashoffset="${circ*(1-clamp(percent,0,100)/100)}"/></svg><div class="ring-center">${icon('flame',20)}<div class="ring-percent">${Math.round(percent)}%</div><small>consumed</small></div></div>`;}
+  function chartSvg(weights,large=false){
+    if(weights.length<2)return `<div class="empty-state">${icon('chart-no-axes-combined',30)}<h3>Start a weight trend</h3><p>Log a few morning weights to see the trend line appear.</p></div>`;
+    const W=650,H=large?230:195,top=18,bot=large?36:13,left=large?42:8,right=8;
+    const minD=moveDay(dayKey(),large?-27:-20), points=weights.filter(w=>w.date>=minD&&w.date<=dayKey());
+    if(points.length<2)return `<div class="empty-state"><p>Not enough recent weights yet.</p></div>`;
+    let lo=Math.min(...points.map(w=>w.kg)),hi=Math.max(...points.map(w=>w.kg));const pad=Math.max(.22,(hi-lo)*.3);lo-=pad;hi+=pad;
+    const start=parseDay(minD),days=diffDays(dayKey(),minD)||1;
+    const x=p=>left+diffDays(p.date,minD)/days*(W-left-right);
+    const y=v=>top+(hi-v)/(hi-lo)*(H-top-bot);
+    const raw=points.map((p,i)=>`${i?'L':'M'}${x(p).toFixed(1)},${y(p.kg).toFixed(1)}`).join(' ');
+    const smoothed=points.map((p,i)=>({date:p.date,kg:median(points.filter(q=>Math.abs(diffDays(q.date,p.date))<=3).map(q=>q.kg))}));
+    const trend=smoothed.map((p,i)=>`${i?'L':'M'}${x(p).toFixed(1)},${y(p.kg).toFixed(1)}`).join(' ');
+    const area=trend+` L${x(smoothed[smoothed.length-1]).toFixed(1)},${H-bot} L${x(smoothed[0]).toFixed(1)},${H-bot} Z`;
+    const gid=large?'trend-large-grad':'trend-small-grad';
+    const grid=[.05,.5,.95].map(t=>{const val=hi-(hi-lo)*t,pos=top+(H-top-bot)*t;return `<line x1="${left}" x2="${W-right}" y1="${pos.toFixed(1)}" y2="${pos.toFixed(1)}" stroke="#eef1f7" stroke-dasharray="4 6"/>${large?`<text x="${left-9}" y="${pos+4}" text-anchor="end" font-size="10" fill="#b6b6b6">${val.toFixed(1)}</text>`:''}`}).join('');
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Logged weight measurements and seven-day smoothed trend" preserveAspectRatio="none"><defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9a9a9d" stop-opacity=".15"/><stop offset="1" stop-color="#9a9a9d" stop-opacity="0"/></linearGradient></defs>${grid}<path d="${area}" fill="url(#${gid})"/><path d="${raw}" fill="none" stroke="#c1c1c5" stroke-width="${large?'1.9':'1.8'}" stroke-dasharray="4 5" stroke-linecap="round" stroke-linejoin="round"/><path d="${trend}" fill="none" stroke="#29292b" stroke-width="${large?'3.6':'3.4'}" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${x(smoothed[smoothed.length-1])}" cy="${y(smoothed[smoothed.length-1].kg)}" r="${large?5:4.5}" fill="#272729" stroke="white" stroke-width="3"/>${large?[0,.25,.5,.75,1].map(t=>{const k=moveDay(minD,Math.round(t*days));return `<text x="${left+t*(W-left-right)}" y="${H-8}" text-anchor="${t===0?'start':t===1?'end':'middle'}" font-size="10" fill="#b6b6b6">${esc(longDate(k,{month:'short',day:'numeric'}))}</text>`}).join(''):''}</svg>`;
+  }
+  function recentSlope(weights){const arr=weights.filter(w=>w.date>=moveDay(dayKey(),-20));if(arr.length<4)return null;const first=arr.slice(0,Math.min(5,Math.floor(arr.length/2))),last=arr.slice(-Math.min(5,Math.floor(arr.length/2)));const span=diffDays(last[Math.floor(last.length/2)].date,first[Math.floor(first.length/2)].date);return span>=7?(median(last.map(w=>w.kg))-median(first.map(w=>w.kg)))/span*7:null;}
+  function renderHome(){const today=dayKey(),e=calculateEngine(),next=getTomorrow(),t=targetsFor(state.plan.activeTarget),v=totals(today),w=getWeights(),rem=t.calories-v.calories,pct=Math.round(v.calories/t.calories*100),weekly=recentSlope(w);
+    return `<div class="screen-content">${pageHeading(`Happy ${parseDay(today).toLocaleDateString('en-US',{weekday:'long'})}, ${esc(state.profile.name||'there')} · ${longDate(today,{month:'long',day:'numeric'})}`,'Your daily balance','A clearer view of your nutrition, one day at a time.',`<div class="date-chip">${icon('calendar-days')} Today</div>`)}${demoNotice()}
+    <div class="grid-top"><section class="card hero-card"><div class="hero-copy"><div class="hero-label">Calories remaining</div><div class="hero-number">${fmt(Math.abs(rem))}<small>kcal</small></div>${rem<0?'<p class="inline-label">Over target</p>':''}<hr class="hero-divider"/><div class="hero-stats"><div><span>Eaten</span><b>${fmt(v.calories)}</b></div><div><span>Daily goal</span><b>${fmt(t.calories)}</b></div></div></div>${ring(pct)}</section>
+    <section class="card plan-preview-card"><div class="plan-preview-top"><span class="section-mini">Tomorrow's target</span><span class="plan-status">${icon('sparkles',12)} ${e.calibrated?'Trend-informed':'Starting estimate'}</span></div><div class="plan-preview-body"><div class="tomorrow-number">${fmt(next.calories)} <span>kcal</span></div><p class="tomorrow-desc">${e.protectedCut?'A calorie deficit is paused because your current BMI is below the app’s conservative cutting threshold.':next.change===0?'A steady target while the app watches for meaningful trends.':`A measured ${Math.abs(next.change)} kcal ${next.change>0?'increase':'decrease'} as your longer-term data evolves.`}</p></div><div class="plan-preview-bottom"><small>${next.change===0?'No change planned':`${next.change>0?'+':''}${next.change} kcal vs. today`}</small><button class="light-button" data-tab="plan">View plan ${icon('arrow-right')}</button></div></section></div>
+    <div class="row-title"><h2>Today's macros</h2><button class="text-link" data-tab="log">View food diary ${icon('arrow-right')}</button></div>
+    <div class="macro-grid">${macroCard('protein','Protein',v.protein,t.protein,'blue','activity')}${macroCard('carbs','Carbs',v.carbs,t.carbs,'teal','wheat')}${macroCard('fat','Fat',v.fat,t.fat,'orange','droplets')}</div>
+    <div class="lower-grid"><section class="card metric-card"><div class="card-heading"><div><h3>Weight trend</h3><p>Recent morning weigh-ins</p></div>${weekly===null?'<span class="mini-pill">Add weigh-ins</span>':`<span class="trend-badge">${icon(weekly<=0?'trending-down':'trending-up',13)} ${weekly>0?'+':''}${fmt(weekly,2)} kg/wk</span>`}</div><div class="stat-large">${fmt(currentWeight(),1)} <small>kg</small></div><div class="chart-wrapper">${chartSvg(w)}</div><div class="axis-bottom"><span>3 weeks ago</span><span>Today</span></div></section>
+    <section class="card metric-card"><div class="card-heading"><div><h3>Quick actions</h3><p>Keep your daily record current</p></div></div><div class="quick-list">
+    <button class="quick-action" data-modal="food"><span class="quick-icon blue">${icon('plus')}</span><span><strong>Log a meal</strong><small>Add calories and macros</small></span>${icon('chevron-right',16).replace('class="icon"','class="icon arrow"')}</button>
+    <button class="quick-action" data-modal="weight"><span class="quick-icon orange">${icon('scale')}</span><span><strong>Record weight</strong><small>Consistent morning weigh-ins</small></span>${icon('chevron-right',16).replace('class="icon"','class="icon arrow"')}</button>
+    <button class="quick-action" data-modal="daily"><span class="quick-icon teal">${icon('list-checks')}</span><span><strong>Log daily totals</strong><small>Already track food elsewhere?</small></span>${icon('chevron-right',16).replace('class="icon"','class="icon arrow"')}</button></div></section></div>
+    <div class="insight-card"><div class="insight-symbol">${icon('sparkles',21)}</div><div><h3>${e.calibrated?'Your estimate now uses your actual trends':'Metria is building your baseline'}</h3><p>${e.calibrated?`Using ${e.completed} completed food days and ${e.weighDays} weigh-ins over the recent observation window. Numbers are estimates, not measurements of your metabolism.`:`Complete your food log and weigh in regularly for at least 2–3 weeks. One unusually high or low weigh-in won't change your plan.`}</p></div></div></div>`;
+  }
+  function renderLog(){const k=selectedDate,l=logFor(k),v=totals(k),t=targetsFor(state.plan.activeTarget),today=dayKey();
+    let offset=diffDays(k,today); const strip=Array.from({length:7},(_,i)=>moveDay(k,i-3));if(strip[0]>today){strip.splice(0,7,...Array.from({length:7},(_,i)=>moveDay(today,i-6)));}
+    const mealSections=meals.map(meal=>{const foods=l.foods.filter(f=>f.meal===meal),sum=foods.reduce((s,f)=>s+f.calories,0);
+      return `<section class="card log-section"><div class="meal-heading"><h3 class="meal-name">${meal}<span class="meal-count">${foods.length?`${foods.length} item${foods.length===1?'':'s'}`:''}</span></h3><span class="meal-kcal">${fmt(sum)} kcal</span></div>
+      ${foods.length?foods.map(f=>`<div class="food-row"><div class="food-avatar">${icon('utensils',17)}</div><div style="min-width:0"><strong>${esc(f.name)}</strong><small>P ${fmt(f.protein)}g · C ${fmt(f.carbs)}g · F ${fmt(f.fat)}g</small></div><span class="food-energy">${fmt(f.calories)}</span><button class="icon-button" title="Remove ${esc(f.name)}" aria-label="Remove ${esc(f.name)}" data-action="remove-food" data-id="${esc(f.id)}" data-date="${k}">${icon('x')}</button></div>`).join(''):'<p class="small-print">Nothing logged yet.</p>'}
+      <button class="add-meal-button" data-modal="food" data-meal="${meal}">${icon('plus')} Add ${meal.toLowerCase()}</button></section>`;
+    }).join('');
+    return `<div class="screen-content">${pageHeading('YOUR NUTRITION JOURNAL','Food diary','Log what you actually eat. Mark a day complete only when everything is included.',`<div class="right-actions"><button class="button ghost small" data-modal="daily">Daily totals</button><button class="button primary small" data-modal="food">${icon('plus')} Add food</button></div>`)}${demoNotice()}
+      <div class="day-strip">${strip.map(d=>`<button class="day-pill ${d===k?'active':''} ${state.logs[d]?.foods?.length?'has-entry':''}" data-date="${d}" data-action="select-day" ${d>today?'disabled':''}><span class="weekday">${longDate(d,{weekday:'short'})}</span><span class="day-number">${parseDay(d).getDate()}</span></button>`).join('')}</div>
+      <div class="mini-metric-row" style="margin:0 0 17px"><div><strong class="sub-headline">${k===today?'Today':longDate(k,{weekday:'long',month:'short',day:'numeric'})}</strong>${l.complete?'<span class="complete-mark" style="margin-left:9px">Completed</span>':''}</div><input class="date-field" aria-label="Choose diary date" id="diary-date" type="date" value="${k}" max="${today}"/></div>
+      <div class="summary-strip"><div class="summary-block"><small>Calories</small><strong>${fmt(v.calories)} <em>kcal</em></strong></div><div class="summary-block"><small>Protein</small><strong>${fmt(v.protein)} <em>g</em></strong></div><div class="summary-block"><small>Carbs</small><strong>${fmt(v.carbs)} <em>g</em></strong></div><div class="summary-block"><small>Fat</small><strong>${fmt(v.fat)} <em>g</em></strong></div></div>
+      <div class="log-columns"><div>${mealSections}</div><aside>
+      <section class="card sidebar-card"><div class="card-heading"><div><h3>Daily progress</h3><p>Compared with your current plan</p></div></div><div class="mini-macro-list">${[['Calories',v.calories,t.calories,'blue','kcal'],['Protein',v.protein,t.protein,'teal','g'],['Carbs',v.carbs,t.carbs,'orange','g'],['Fat',v.fat,t.fat,'blue','g']].map(([n,cur,max,color,unit])=>`<div class="mini-macro-row"><div class="mini-macro-label"><span>${n}</span><strong>${fmt(cur)} <em>/ ${fmt(max)} ${unit}</em></strong></div><div class="track"><span class="${color}" style="width:${clamp(cur/max*100,0,100)}%"></span></div></div>`).join('')}</div><div class="mini-separator"></div><button class="complete-toggle ${l.complete?'done':''}" data-action="toggle-complete"> <span class="check">${l.complete?icon('check',14):''}</span><span><strong>${l.complete?'Day marked complete':'Mark day complete'}</strong><br/><small>Only when all food has been logged</small></span></button><p class="diary-note">Incomplete days are excluded from maintenance calibration. This prevents partial food logs from producing a false estimate.</p></section>
+      <section class="card sidebar-card"><div class="card-heading"><div><h3>Water & movement</h3><p>Optional daily context</p></div></div><div class="mini-metric-row" style="margin-top:21px"><div><p class="inline-label">Water logged</p><div class="card-value">${fmt(l.water)} <small class="card-unit">ml</small></div></div><span class="quick-icon blue">${icon('droplets')}</span></div><div class="water-controls"><button data-action="add-water" data-amount="250">+250 ml</button><button data-action="add-water" data-amount="500">+500 ml</button><button data-modal="water">Edit</button></div><div class="mini-separator"></div><div class="mini-metric-row"><div><p class="inline-label">Steps</p><div class="card-value">${fmt(l.steps)} <small class="card-unit">steps</small></div></div><button class="icon-button" data-modal="steps" title="Edit steps">${icon('pencil')}</button></div><p class="lock-text">Movement is recorded for context and does not automatically award extra food calories.</p></section></aside></div></div>`;
+  }
+  function renderTrends(){const w=getWeights(),slope=recentSlope(w),first=w.length?w[Math.max(0,w.length-8)]:null,average7=average(w.filter(a=>a.date>=moveDay(dayKey(),-6)).map(a=>a.kg)),e=calculateEngine();
+    return `<div class="screen-content">${pageHeading('THE BIGGER PICTURE','Weight trends','Daily fluctuations are normal. Follow the longer-term direction.',`<button class="button primary small" data-modal="weight">${icon('plus')} Log weight</button>`)}${demoNotice()}
+    <div class="small-grid"><div class="card small-stat"><div class="label">Latest weight</div><div class="number">${fmt(currentWeight(),1)} <small class="card-unit">kg</small></div><div class="meta">Last recorded</div></div><div class="card small-stat"><div class="label">7-day average</div><div class="number">${average7?fmt(average7,1):'—'} <small class="card-unit">kg</small></div><div class="meta">Smoothed over the week</div></div><div class="card small-stat"><div class="label">Weekly trend</div><div class="number">${slope===null?'—':`${slope>0?'+':''}${fmt(slope,2)}`} <small class="card-unit">kg</small></div><div class="meta">Approximate direction</div></div></div>
+    <section class="card big-chart-card"><div class="card-heading"><div><h3>Your weight over time</h3><p>28-day view · trend smoother uses a ±3-day median</p></div><div class="chart-legend"><span class="legend-item"><span class="legend-dot"></span> Smoothed</span><span class="legend-item"><span class="legend-dot light" style="background:#c1c1c5"></span> Daily</span></div></div><div class="trend-large">${chartSvg(w,true)}</div></section>
+    <div class="sub-grid"><section class="card card-pad"><div class="card-heading"><div><h3>Recent weigh-ins</h3><p>Consistent conditions improve the trend</p></div><button class="text-link" data-modal="weight">${icon('plus')} Add</button></div><div class="weight-list">${w.length?w.slice(-7).reverse().map(a=>`<div class="weight-row"><div class="weight-row-date">${longDate(a.date,{weekday:'short',month:'short',day:'numeric'})}<small>${a.date}</small></div><strong>${fmt(a.kg,1)} <small>kg</small></strong><button class="icon-button" data-action="remove-weight" data-date="${a.date}" aria-label="Remove weight for ${a.date}">${icon('x')}</button></div>`).join(''):`<div class="empty-state">${icon('scale')}<h3>No weigh-ins yet</h3></div>`}</div></section>
+    <section class="card explain-card"><h3>Understand the trend</h3><p>Weight can rise or fall from water, salt, food in your digestive system, training, and other factors—even if body fat barely changes.</p><ul><li>Weigh under similar conditions, preferably after waking.</li><li>Compare weekly averages, not isolated readings.</li><li>Allow at least 2–3 weeks of complete food data for useful maintenance estimates.</li></ul><div class="plan-callout">${icon('sparkles',20)}<div><strong>${e.calibrated?'Trend data available':'Still learning your baseline'}</strong><p>${e.calibrated?`${e.completed} completed nutrition days are informing the estimate.`:'A realistic estimate needs both food entries and weight measurements.'}</p></div></div></section></div></div>`;
+  }
+  function renderPlan(){const e=calculateEngine(),next=getTomorrow(),current=state.plan.activeTarget,mac=targetsFor(current);const reliability=e.calibrated?'Trend-informed estimate':'Activity-based estimate';
+    const adjustment=e.protectedCut?'Deficit paused':state.profile.goal==='cut'?'Conservative deficit':state.profile.goal==='gain'?'Small surplus':'Maintenance';
+    return `<div class="screen-content">${pageHeading('SMART, NOT REACTIVE','Your calorie plan','A practical starting estimate, refined carefully as consistent evidence builds.',`<button class="button secondary small" data-modal="profile">${icon('pencil')} Edit profile</button>`)}${demoNotice()}
+    ${e.protectedCut?`<div class="notice warning" style="margin-bottom:19px">${icon('info')}<div><b>Cutting is paused by a safety check.</b> Your estimated BMI is ${fmt(e.bmi,1)}, below this app’s conservative BMI 20 cutting threshold. Your plan stays at maintenance rather than recommending a deficit. BMI is not a diagnosis.</div></div>`:''}
+    <section class="card plan-hero"><div class="plan-hero-content"><h2>Your daily calorie budget</h2><p>${reliability} · ${adjustment.toLowerCase()}</p><div class="plan-metrics"><div class="plan-metric"><strong>${fmt(current)}</strong><small>kcal · today</small></div><div class="plan-metric secondary-metric"><strong>${fmt(next.calories)}</strong><small>kcal · tomorrow</small></div></div><button class="button small" data-modal="profile">${icon('sliders-horizontal')} Adjust your plan</button></div></section>
+    <div class="plan-detail-grid"><section class="card card-pad"><div class="card-heading"><div><h3>Maintenance intelligence</h3><p>Energy expenditure is estimated, not measured</p></div><span class="mini-pill">${e.quality}</span></div><div class="stat-large">${fmt(Math.round(e.effective))} <small>kcal/day</small></div><div class="info-list"><div class="info-row"><span>Starting estimate</span><b>${fmt(Math.round(e.baseline))} kcal</b></div><div class="info-row"><span>Resting metabolism estimate</span><b>${fmt(Math.round(e.bmr))} kcal</b></div><div class="info-row"><span>Observed trend estimate</span><b>${e.observedTdee?`${fmt(Math.round(e.observedTdee))} kcal`:'Not enough data'}</b></div><div class="info-row"><span>Completed food days</span><b>${e.completed}</b></div><div class="info-row"><span>Recorded weigh-ins</span><b>${e.weighDays}</b></div></div><div class="plan-callout">${icon('info',19)}<div><strong>${e.calibrated?'Calibrated using logged trends':'What improves this estimate?'}</strong><p>${e.calibrated?'Metria blends a starting estimate with food intake and multi-day weight movement. Body-water changes and tracking errors can still distort the answer.':'Mark food days complete and record morning weights consistently for 14+ days. Partial days are ignored.'}</p></div></div></section>
+    <section class="card card-pad"><div class="card-heading"><div><h3>Your macro targets</h3><p>Calculated from your daily calorie budget</p></div></div><div class="mini-macro-list" style="margin-top:27px">${[['Protein',mac.protein,'blue'],['Carbs',mac.carbs,'teal'],['Fat',mac.fat,'orange']].map(([name,val,color])=>`<div class="mini-macro-row"><div class="mini-macro-label"><span>${name}</span><strong>${fmt(val)} g</strong></div><div class="track"><span class="${color}" style="width:${Math.round((name==='Protein'?val*4:name==='Fat'?val*9:val*4)/current*100)}%"></span></div></div>`).join('')}</div><div class="mini-separator"></div><div class="info-row"><span>Protein per kg</span><b>${fmt(state.profile.proteinFactor,1)} g/kg</b></div><div class="info-row"><span>Fat per kg</span><b>${fmt(state.profile.fatFactor,1)} g/kg</b></div><div class="info-row"><span>Carbs</span><b>Remaining energy</b></div><button class="button ghost small" style="margin-top:18px" data-modal="profile">${icon('pencil')} Customize macros</button></section></div>
+    <div class="row-title"><h2>Choose your direction</h2></div><section class="card card-pad"><div class="section-mini">YOUR OBJECTIVE</div><div class="goal-chooser"><button class="goal-option ${state.profile.goal==='maintain'?'active':''}" data-goal="maintain">Maintain weight</button><button class="goal-option ${state.profile.goal==='cut'?'active':''}" data-goal="cut">Gentle cut</button><button class="goal-option ${state.profile.goal==='gain'?'active':''}" data-goal="gain">Gain gradually</button></div><p class="small-print">Changing goals resets the active plan immediately. Day-to-day recalibration is otherwise limited to 50 kcal at a time and roughly 150 kcal over seven days. Targets respond to longer-term weight and food trends, not to a single day's overeating or undereating. Changes are estimates, not precise metabolic measurements.</p></section>
+    <div class="insight-card"><div class="insight-symbol">${icon('shield-check',21)}</div><div><h3>Built to avoid overcorrection</h3><p>Single weigh-ins never trigger a large calorie change. Metria uses a 28-day observation window, excludes incomplete logs, limits adjustments, and pauses cutting below its conservative BMI threshold. This app is not a substitute for individualized clinical or dietetic advice.</p></div></div></div>`;
+  }
+  function renderSettings(){const p=state.profile;return `<div class="screen-content">${pageHeading('YOUR SPACE','Settings','Manage your goals, data, and on-device preferences.')}${demoNotice()}
+    <div class="plan-detail-grid"><section class="card card-pad"><div class="card-heading"><div><h3>Personal profile</h3><p>Used to build an initial calorie estimate</p></div><button class="text-link" data-modal="profile">${icon('pencil')} Edit</button></div><div class="info-list"><div class="info-row"><span>Name</span><b>${esc(p.name)}</b></div><div class="info-row"><span>Age</span><b>${fmt(p.age)} years</b></div><div class="info-row"><span>Height</span><b>${fmt(p.height)} cm</b></div><div class="info-row"><span>Latest weight</span><b>${fmt(currentWeight(),1)} kg</b></div><div class="info-row"><span>Activity</span><b>${({sedentary:'Sedentary',light:'Light',moderate:'Moderate',active:'Active',very:'Very active'})[p.activity]}</b></div><div class="info-row"><span>Goal</span><b>${({cut:'Cut',maintain:'Maintain',gain:'Gain'})[p.goal]}</b></div></div></section>
+    <section class="card card-pad"><div class="card-heading"><div><h3>Privacy & backup</h3><p>Everything is stored in this browser</p></div>${icon('shield-check',20)}</div><div class="plan-callout">${icon('lock-keyhole',20)}<div><strong>On-device storage</strong><p>No account, no server, no analytics, and no automatic Apple Health access. Clearing Safari website data may remove your entries.</p></div></div><div class="settings-actions"><button class="button secondary small" data-action="export">${icon('download')} Export data</button><label class="button ghost small clickable">${icon('upload')} Import data<input type="file" id="import-input" accept="application/json,.json" style="display:none"/></label></div><div class="subtle-divider"></div><button class="button danger small" data-action="reset">${icon('trash-2')} Reset all data</button><p class="small-print">Export first to keep your records. Imports replace the current on-device records.</p></section></div>
+    <div class="row-title"><h2>Install on iPhone</h2></div><section class="card card-pad"><div class="card-heading"><div><h3>Add Metria to your Home Screen</h3><p>A standalone app experience from a secure website</p></div>${icon('apple',22)}</div><div class="info-list"><div class="info-row"><span>1. Open the hosted website in Safari</span><b>HTTPS required</b></div><div class="info-row"><span>2. Tap Share</span><b>Safari toolbar</b></div><div class="info-row"><span>3. Select Add to Home Screen</span><b>Metria icon</b></div></div><p class="small-print">You can also open index.html locally as a basic webpage for testing. Offline installation requires deployment to HTTPS. Apple Health / HealthKit syncing would need a supported native integration and is not included in this version.</p></section>
+    <p class="footer-text">Metria v1.0 · Local-first nutrition companion. Calorie, expenditure and body-weight trend estimates are approximate. For personalized medical or nutrition treatment, consult a qualified professional.</p></div>`;}
+  function renderNav(){
+    document.getElementById('desktop-nav').innerHTML=navItems.map(([tab,name,ico],i)=>`${i===4?'<div class="nav-divider"></div>':''}<button class="nav-item ${view===tab?'active':''}" data-tab="${tab}" aria-current="${view===tab?'page':'false'}">${icon(ico,20)} ${name}</button>`).join('');
+    document.getElementById('mobile-nav').innerHTML=navItems.filter(x=>x[0]!=='settings').map(([tab,name,ico])=>`<button class="bottom-item ${view===tab?'active':''}" data-tab="${tab}" aria-current="${view===tab?'page':'false'}">${icon(ico,23)}<span>${tab==='home'?'Home':tab==='log'?'Diary':tab==='trends'?'Trends':'Plan'}</span></button>`).join('');
+    document.getElementById('profile-trigger').textContent=(state.profile.name||'M').trim().slice(0,1).toUpperCase();
+    document.getElementById('topbar-label').textContent=({home:'YOUR DAILY OVERVIEW',log:'NUTRITION JOURNAL',trends:'BODY WEIGHT',plan:'ADAPTIVE PLAN',settings:'APP SETTINGS'})[view];
+  }
+  function render(){ensurePlanForToday();renderNav();document.getElementById('app-content').innerHTML=({home:renderHome,log:renderLog,trends:renderTrends,plan:renderPlan,settings:renderSettings})[view]();document.documentElement.classList.add('metria-live');}
+  function navigate(tab){if(!['home','log','trends','plan','settings'].includes(tab))return;view=tab;try{if(location.protocol!=='about:')history.replaceState(null,'',location.pathname+location.search+'#'+tab);}catch(_ignored){}render();window.scrollTo({top:0,behavior:'auto'});}
+  function toast(message,error=false){const stack=document.getElementById('toast-stack'),node=document.createElement('div');node.className='toast';node.innerHTML=`${icon(error?'info':'check')} <span>${esc(message)}</span>`;stack.appendChild(node);setTimeout(()=>node.remove(),3200);}
+  function modalShell(title,subtitle,content,submitLabel,submitAction){return `<div class="modal-backdrop" id="modal-backdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-header"><div><h2>${esc(title)}</h2><p>${esc(subtitle)}</p></div><button class="modal-close" data-action="close-modal" aria-label="Close">${icon('x',19)}</button></div><form id="modal-form" data-form="${submitAction}"><div class="modal-body">${content}</div><div class="modal-footer"><button class="button ghost" data-action="close-modal" type="button">Cancel</button><button class="button primary" type="submit">${icon('check')} ${esc(submitLabel)}</button></div></form></div></div>`;}
+  function field(id,label,value,type='number',opts=''){return `<div class="field"><label for="${id}">${label}</label><input id="${id}" name="${id}" type="${type}" value="${esc(value)}" ${opts} required/></div>`;}
+  function openModal(type,meal=''){priorFocus=document.activeElement;modal=type;let content='';
+    if(type==='food'){
+      content=modalShell('Log food','Add a meal with calories and macronutrients.',`<div class="form-grid" style="grid-template-columns:1fr"><div class="field"><label for="food-name">Food / meal name</label><input id="food-name" name="name" maxlength="90" placeholder="e.g. Chicken and rice" autocomplete="off" required/></div><div class="field"><label for="food-meal">Meal</label><select id="food-meal" name="meal">${meals.map(m=>`<option ${m===meal?'selected':''}>${m}</option>`).join('')}</select></div></div><div class="subtle-divider"></div><div class="form-grid">${field('calories','Calories (kcal)','', 'number','min="0" max="10000" step="1" placeholder="e.g. 450"')}${field('protein','Protein (g)',0,'number','min="0" max="1200" step="0.1"')}${field('carbs','Carbs (g)',0,'number','min="0" max="1500" step="0.1"')}${field('fat','Fat (g)',0,'number','min="0" max="1000" step="0.1"')}</div><div class="calorie-preview"><span>Energy calculated from macros</span><strong id="macro-energy">0 kcal</strong></div><p class="input-caption">You can log calories directly from a food label. Calories from rounded macros may differ slightly; the app uses the calories you enter.</p>`, 'Save food','food');
+    }else if(type==='daily'){
+      const t=totals(selectedDate);
+      content=modalShell('Log daily totals','For totals copied from another nutrition diary.',`<div class="modal-badge">This replaces all food entries for ${esc(longDate(selectedDate,{month:'short',day:'numeric'}))} with one daily summary. Use it only when your numbers include everything eaten.</div><div class="form-grid">${field('calories','Calories (kcal)',t.calories||'', 'number','min="0" max="10000" step="1" placeholder="e.g. 2400"')}${field('protein','Protein (g)',t.protein,'number','min="0" max="1200" step="0.1"')}${field('carbs','Carbs (g)',t.carbs,'number','min="0" max="1500" step="0.1"')}${field('fat','Fat (g)',t.fat,'number','min="0" max="1000" step="0.1"')}</div><div class="calorie-preview"><span>Energy calculated from macros</span><strong id="macro-energy">${fmt(Math.round(t.protein*4+t.carbs*4+t.fat*9))} kcal</strong></div><p class="input-caption">Mark the day complete after saving if these totals truly represent your full day's food intake.</p>`, 'Save daily totals','daily');
+    }else if(type==='weight'){
+      content=modalShell('Record weight','Use the same scale and similar conditions when possible.',`<div class="form-grid">${field('weight-date','Date',selectedDate,'date',`max="${dayKey()}"`)}${field('weight-kg','Weight (kg)',fmt(currentWeight(),1),'number','min="35" max="300" step="0.1"')}</div><p class="input-caption">Existing weight for the chosen date will be updated. One reading does not determine your calorie target.</p>`, 'Save weigh-in','weight');
+    }else if(type==='water'){
+      content=modalShell('Log water','An optional diary reference, not a hydration prescription.',`${field('water','Water (ml)',logFor(selectedDate).water,'number','min="0" max="12000" step="50"')}<p class="input-caption">Your water log stays separate from the calorie calculation.</p>`,'Save water','water');
+    }else if(type==='steps'){
+      content=modalShell('Log steps','Steps are useful context; do not automatically count them twice.',`${field('steps','Steps',logFor(selectedDate).steps,'number','min="0" max="150000" step="1"')}<p class="input-caption">This is manual tracking. No watch or HealthKit connection is active.</p>`,'Save steps','steps');
+    }else if(type==='profile'){
+      const p=state.profile;
+      const profileForm=`<div class="form-grid">${field('name','Your name',state.mode==='demo'?'':p.name,'text','maxlength="35" placeholder="Your name"')}
+      <div class="field"><label for="sex">Equation reference</label><select id="sex" name="sex"><option value="male" ${p.sex==='male'?'selected':''}>Male equation</option><option value="female" ${p.sex==='female'?'selected':''}>Female equation</option><option value="other" ${p.sex==='other'?'selected':''}>Midpoint estimate</option></select></div>
+      ${field('age','Age (18+)',p.age,'number','min="18" max="100" step="1"')}${field('height','Height (cm)',p.height,'number','min="120" max="230" step="0.1"')}${field('weight','Current weight (kg)',fmt(currentWeight(),1),'number','min="35" max="300" step="0.1"')}
+      <div class="field"><label for="activity">Activity level</label><select id="activity" name="activity">${[['sedentary','Mostly sitting'],['light','Lightly active'],['moderate','Moderately active'],['active','Very active'],['very','Extremely active']].map(([v,l])=>`<option value="${v}" ${p.activity===v?'selected':''}>${l}</option>`).join('')}</select></div>
+      <div class="field"><label for="goal">Goal</label><select id="goal" name="goal">${[['maintain','Maintain'],['cut','Gentle cut'],['gain','Gradual gain']].map(([v,l])=>`<option value="${v}" ${p.goal===v?'selected':''}>${l}</option>`).join('')}</select></div>
+      <div class="field"><label for="pace">Pace</label><select id="pace" name="pace"><option value="gentle" ${p.pace==='gentle'?'selected':''}>Gentle</option><option value="steady" ${p.pace==='steady'?'selected':''}>Steady (still gradual)</option></select></div>
+      ${field('protein-factor','Protein (g/kg)',p.proteinFactor,'number','min="1.2" max="2.2" step="0.1"')}${field('fat-factor','Fat (g/kg)',p.fatFactor,'number','min="0.6" max="1.2" step="0.1"')}
+      </div><div class="subtle-divider"></div><div class="field"><label for="manual-tdee">Optional known maintenance estimate (kcal)</label><input id="manual-tdee" name="manual-tdee" type="number" min="1200" max="5500" step="25" placeholder="Leave blank to estimate" value="${p.manualMaintenance??''}"/><span class="hint">An initial guess or independent estimate, not a guaranteed value. Recorded trends can still refine it.</span></div><p class="input-caption">Metria is for adults 18+. Its estimates use population equations and do not replace clinical advice.</p>`;
+      content=modalShell(state.mode==='demo'?'Create your plan':'Edit your plan',state.mode==='demo'?'This removes fictional sample data and starts a fresh private diary.':'Updates your targets while keeping recorded entries.',`${state.mode==='demo'?'<div class="modal-badge">You are in demo mode. Saving will clear all example food and weight entries.</div>':''}${profileForm}`,state.mode==='demo'?'Create personal plan':'Save changes','profile');
+    }
+    if(!content)return;
+    document.getElementById('modal-root').innerHTML=content;
+    document.body.style.overflow='hidden';
+    requestAnimationFrame(()=>document.querySelector('#modal-form input')?.focus({preventScroll:true}));
+  }
+  function closeModal(){document.getElementById('modal-root').innerHTML='';document.body.style.overflow='';modal='';if(priorFocus?.isConnected)priorFocus.focus({preventScroll:true});priorFocus=null;}
+  function saveFood(form){const f=new FormData(form),name=String(f.get('name')||'').trim(),meal=String(f.get('meal'));
+    if(!name||!meals.includes(meal))throw Error('Enter a valid food and meal.');
+    const vals=['calories','protein','carbs','fat'].map(k=>Number(f.get(k)));
+    if(vals.some((n,i)=>!Number.isFinite(n)||n<0||n>(i===0?10000:1500)))throw Error('Please enter valid nutrition values.');
+    if(vals[0]===0&&vals.slice(1).some(n=>n>0))throw Error('Calories cannot be zero when macros are provided.');
+    const record={id:`${Date.now()}-${Math.random().toString(36).slice(2,8)}`,name,meal,calories:Math.round(vals[0]),protein:Math.round(vals[1]*10)/10,carbs:Math.round(vals[2]*10)/10,fat:Math.round(vals[3]*10)/10};
+    const l=logFor(selectedDate,true);l.foods.push(record);l.complete=false;save();toast('Food added to diary.');
+  }
+  function saveDaily(form){
+    const f=new FormData(form),vals=['calories','protein','carbs','fat'].map(k=>Number(f.get(k)));
+    if(vals.some((n,i)=>!Number.isFinite(n)||n<0||n>(i===0?10000:1500))||vals[0]===0)throw Error('Enter complete, valid daily totals.');
+    const l=logFor(selectedDate,true);
+    l.foods=[{id:`daily-${Date.now()}`,name:'Daily totals · manual entry',meal:'Snacks',calories:Math.round(vals[0]),protein:Math.round(vals[1]*10)/10,carbs:Math.round(vals[2]*10)/10,fat:Math.round(vals[3]*10)/10}];
+    l.complete=false;save();toast('Daily totals saved. Mark the day complete when ready.');
+  }
+  function saveWeight(form){const f=new FormData(form),date=String(f.get('weight-date')),kg=Number(f.get('weight-kg'));
+    if(!validDate(date)||date>dayKey()||!Number.isFinite(kg)||kg<35||kg>300)throw Error('Enter a valid date and weight.');
+    state.weights=state.weights.filter(w=>w.date!==date);state.weights.push({date,kg:Math.round(kg*10)/10});state.weights.sort((a,b)=>a.date.localeCompare(b.date));state.profile.weight=latestWeight();save();toast('Weight recorded.');
+  }
+  function saveProfile(form){const f=new FormData(form),name=String(f.get('name')||'').trim().slice(0,35);
+    const number=k=>Number(f.get(k)); const age=number('age'),height=number('height'),weight=number('weight'),protein=number('protein-factor'),fat=number('fat-factor');
+    if(!name||age<18||age>100||height<120||height>230||weight<35||weight>300||protein<1.2||protein>2.2||fat<.6||fat>1.2)throw Error('Please check your name, age, measurements and macro values.');
+    const manual=String(f.get('manual-tdee')||'').trim();
+    if(manual&&(!Number.isFinite(Number(manual))||Number(manual)<1200||Number(manual)>5500))throw Error('Maintenance override must be 1,200–5,500 kcal.');
+    const profile={name,sex:String(f.get('sex')),age,height,weight,activity:String(f.get('activity')),goal:String(f.get('goal')),pace:String(f.get('pace')),proteinFactor:protein,fatFactor:fat,manualMaintenance:manual?Number(manual):null};
+    if(state.mode==='demo'){state={version:VERSION,mode:'personal',profile,logs:{},weights:[{date:dayKey(),kg:weight}],plan:null};}
+    else {state.profile=profile;const today=dayKey();const prev=state.weights.find(w=>w.date===today);if(!prev||Math.abs(prev.kg-weight)>.049){state.weights=state.weights.filter(w=>w.date!==today);state.weights.push({date:today,kg:Math.round(weight*10)/10});}}
+    resetPlan();save();toast('Your plan has been updated.');
+  }
+  function handleSubmit(event){const form=event.target;if(form.id!=='modal-form')return;event.preventDefault();try{const type=form.dataset.form;
+    if(type==='food')saveFood(form);else if(type==='daily')saveDaily(form);else if(type==='weight')saveWeight(form);else if(type==='profile')saveProfile(form);
+    else if(type==='water'){const v=Number(new FormData(form).get('water'));if(!Number.isFinite(v)||v<0||v>12000)throw Error('Enter a valid water amount.');logFor(selectedDate,true).water=v;save();toast('Water updated.');}
+    else if(type==='steps'){const v=Number(new FormData(form).get('steps'));if(!Number.isFinite(v)||v<0||v>150000)throw Error('Enter a valid step count.');logFor(selectedDate,true).steps=v;save();toast('Steps updated.');}
+    closeModal();render();
+  }catch(e){toast(e.message||'Could not save this entry.',true);}}
+  function exportData(){const backup=JSON.stringify({...state,exportedAt:new Date().toISOString()},null,2);const blob=new Blob([backup],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`metria-backup-${dayKey()}.json`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);toast('Backup exported.');}
+  async function importData(file){if(!file)return;try{if(file.size>3_000_000)throw Error('Backup is too large.');const parsed=JSON.parse(await file.text()),incoming=sanitizeImport(parsed);if(!confirm('Import this backup? It will replace all currently saved entries on this device.'))return;state=incoming;selectedDate=dayKey();ensurePlanForToday();save();navigate('home');toast(storageWorks?'Backup restored.':'Backup opened for this session only; storage is unavailable.',!storageWorks);}catch(e){toast(e.message||'Could not import this file.',true);}}
+  function onClick(event){
+    const btn=event.target.closest('[data-tab],[data-action],[data-modal],[data-goal]');
+    if(!btn){if(event.target.id==='modal-backdrop')closeModal();return;}
+    if(btn.dataset.tab){navigate(btn.dataset.tab);return;}
+    if(btn.dataset.modal){openModal(btn.dataset.modal,btn.dataset.meal||'');return;}
+    if(btn.dataset.goal){if(!['maintain','cut','gain'].includes(btn.dataset.goal))return;state.profile.goal=btn.dataset.goal;resetPlan();save();render();toast('Goal updated.');return;}
+    const action=btn.dataset.action;
+    if(action==='close-modal'){closeModal();return;}
+    if(action==='settings'){navigate('settings');return;}
+    if(action==='start-personal'){openModal('profile');return;}
+    if(action==='select-day'){selectedDate=btn.dataset.date;render();return;}
+    if(action==='remove-food'){
+      if(!confirm('Remove this food entry?'))return;
+      const l=logFor(btn.dataset.date,true);l.foods=l.foods.filter(f=>f.id!==btn.dataset.id);l.complete=false;save();render();toast('Food removed.');return;
+    }
+    if(action==='remove-weight'){
+      if(!confirm('Remove this weigh-in?'))return;
+      state.weights=state.weights.filter(w=>w.date!==btn.dataset.date);state.profile.weight=latestWeight();save();render();toast('Weigh-in removed.');return;
+    }
+    if(action==='toggle-complete'){
+      const l=logFor(selectedDate,true);if(!l.complete&&totals(selectedDate).calories===0){toast('Add your meals before marking the day complete.',true);return;}
+      l.complete=!l.complete;save();render();toast(l.complete?'Day completed. It can now inform calibration.':'Day marked incomplete.');return;
+    }
+    if(action==='add-water'){const l=logFor(selectedDate,true);l.water=clamp(l.water+Number(btn.dataset.amount),0,12000);save();render();toast('Water added.');return;}
+    if(action==='export'){exportData();return;}
+    if(action==='reset'){
+      if(!confirm('Delete ALL your saved diary data on this device and return to demo mode? This cannot be undone unless you have an exported backup.'))return;
+      state=newDemo();selectedDate=dayKey();resetPlan();save();navigate('home');toast('Local data reset.');return;
+    }
+  }
+  document.addEventListener('click',onClick);
+  document.addEventListener('submit',handleSubmit);
+  document.addEventListener('change',event=>{
+    if(event.target.id==='diary-date'&&validDate(event.target.value)&&event.target.value<=dayKey()){selectedDate=event.target.value;render();}
+    if(event.target.id==='import-input'){importData(event.target.files[0]);event.target.value='';}
+  });
+  document.addEventListener('input',event=>{
+    if(['calories','protein','carbs','fat'].includes(event.target.id)){
+      const f=document.getElementById('modal-form');if(!f)return;
+      const vals=['protein','carbs','fat'].map(k=>Number(f.querySelector(`#${k}`)?.value||0));
+      const el=document.getElementById('macro-energy');if(el)el.textContent=`${fmt(Math.round(vals[0]*4+vals[1]*4+vals[2]*9))} kcal`;
+    }
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&modal){closeModal();return;}
+    if(event.key==='Tab'&&modal){
+      const controls=[...document.querySelectorAll('#modal-root button:not(:disabled),#modal-root input:not(:disabled),#modal-root select:not(:disabled),#modal-root textarea:not(:disabled)')].filter(n=>n.getClientRects().length);
+      if(!controls.length)return;
+      const first=controls[0],last=controls[controls.length-1];
+      if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+      else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+    }
+  });
+  window.addEventListener('hashchange',()=>{const tab=location.hash.slice(1);if(navItems.some(x=>x[0]===tab))navigate(tab);});
+  state=load();render();
+  window.addEventListener('pageshow',()=>{if(!modal)render();});
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!modal)render();});
+
+  // Testing-only: expose non-mutating diagnostics; no user data is sent anywhere.
+  window.metriaDiagnostics=()=>({state:JSON.parse(JSON.stringify(state)),engine:calculateEngine(),tomorrow:getTomorrow(),today:dayKey()});
+})();
+
+</script>
+</body>
+</html>
