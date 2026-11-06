@@ -193,9 +193,40 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 html.metria-live .preview-fallback{display:none}
 @media(max-width:620px){.preview-fallback{padding:13px 14px;border-radius:15px;margin-bottom:15px}}
 
+
+/* V1.1 — zero-data onboarding; Apple-inspired, monochrome, mobile first. */
+body.metria-onboarding .bottom-nav,body.metria-onboarding .side-nav{display:none!important}
+body.metria-onboarding .sidebar-bottom{margin-top:auto}
+body.metria-onboarding .main-content{padding-bottom:max(50px,env(safe-area-inset-bottom))}
+.welcome-page{width:min(1100px,100%);margin:auto;padding-top:clamp(18px,4vw,52px)}
+.onboard-topline{font-size:10px;letter-spacing:.17em;font-weight:800;color:#88888d;margin-bottom:21px}
+.onboard-intro-grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:30px;align-items:center}
+.onboard-title{font-size:clamp(42px,5.6vw,76px);letter-spacing:-.065em;line-height:1.02;font-weight:770;color:#1d1d1f;margin:0 0 23px}
+.onboard-title span{color:#8a8a90}
+.onboard-intro{max-width:540px;font-size:clamp(14px,1.4vw,17px);line-height:1.8;color:#77777d;margin:0 0 28px}
+.onboard-main-button{font-size:15px!important;min-height:55px;padding:0 25px!important;border-radius:14px!important;box-shadow:0 14px 32px #00000013}
+.onboard-private{display:flex;gap:7px;align-items:center;color:#8a8a8f;font-size:12px;margin:17px 0}
+.onboard-display{min-height:285px;padding:29px;border-radius:32px;background:linear-gradient(150deg,#fff,#f4f4f5);box-shadow:0 22px 65px #0000000c;border:1px solid #e8e8eb;display:flex;flex-direction:column;justify-content:center}
+.mock-top{display:flex;justify-content:space-between;font-size:11px;font-weight:800;color:#98989d;letter-spacing:.16em}
+.mock-number{font-size:clamp(58px,6vw,92px);font-weight:750;line-height:1.15;letter-spacing:-.075em;margin:15px 0 0}
+.mock-number small{font-size:17px;color:#98989d;letter-spacing:0;font-weight:500}
+.mock-caption,.mock-footer{font-size:12px;color:#929297}
+.mock-lines{display:flex;align-items:flex-end;gap:9px;margin:29px 0 17px;height:38px}
+.mock-lines span{height:22px;flex:1;background:linear-gradient(90deg,#dfdfe3,#d5d5d9);border-radius:9px}
+.mock-lines span:nth-child(2){height:36px}.mock-lines span:nth-child(3){height:28px}
+.onboard-perks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:37px}
+.onboard-perks>div{padding:22px;background:#fff;border:1px solid #e9e9ec;border-radius:21px}
+.onboard-perks .icon{color:#5c5c61}.onboard-perks h3{font-size:15px;margin:15px 0 6px;letter-spacing:-.02em}.onboard-perks p{font-size:12px;color:#8b8b90;line-height:1.65;margin:0}
+.onboard-disclaimer{margin-top:20px;color:#99999e;font-size:11px;line-height:1.7}
+.onboard-feature-card{padding:25px;max-width:640px}
+.onboard-feature-card h2{margin:0 0 10px}.onboard-feature-card p{color:#88888c;line-height:1.65}
+@media(max-width:850px){.onboard-intro-grid{grid-template-columns:1fr;gap:12px}.welcome-page{padding-top:27px}.onboard-display{min-height:200px;max-width:700px}.onboard-perks{margin-top:20px}}
+@media(max-width:620px){.onboard-title{font-size:clamp(41px,10vw,57px);letter-spacing:-.065em}.onboard-display{min-height:194px;padding:22px;border-radius:24px}.mock-number{font-size:65px}.onboard-perks{grid-template-columns:1fr;gap:9px}.onboard-perks>div{padding:15px 18px;display:grid;grid-template-columns:27px 1fr;column-gap:12px}.onboard-perks h3{margin:0;font-size:13px}.onboard-perks p{grid-column:2;font-size:11px}.onboard-private{font-size:11px}}
+
 </style>
-  <title>Metria — Nutrition & weight intelligence</title>
+  <title>Metria — Your private nutrition companion</title>
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+  <link rel="manifest" href="./manifest.webmanifest" />
 </head>
 <body>
   <div class="app-shell">
@@ -211,17 +242,7 @@ html.metria-live .preview-fallback{display:none}
         <div class="topbar-left"><span class="eyebrow" id="topbar-label">YOUR DAILY OVERVIEW</span></div>
         <div class="topbar-right"><span class="secure-tag" title="Saved locally on this device"><span class="secure-dot"></span> On-device</span><button id="profile-trigger" class="avatar-button" data-action="settings" aria-label="Open settings">M</button></div>
       </header>
-      <main id="app-content" class="main-content" tabindex="-1"><div class="preview-fallback" role="status"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5h.01"/></svg><div><strong>Preview mode · design visible, tracking paused</strong><p>This iPhone file viewer doesn't run interactive website scripts. For working food logs, weight entries and automatic targets, open the published app in Safari. Visit the hosted site in Safari and ensure JavaScript is enabled.</p></div></div><div class="screen-content"><div class="head-row"><div><p class="kicker">Happy Friday, Alex · November 6</p><h1 class="page-title">Your daily balance <span class="demo-label">DEMO</span></h1><p class="page-subtitle">A clearer view of your nutrition, one day at a time.</p></div><div class="date-chip"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg> Today</div></div><div class="notice demo-notice"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 11v6M12 7h.01"></path></svg><div><b>You're exploring sample data.</b> All weights and meals shown here are fictional. <button data-action="start-personal">Start your own plan</button> to clear the samples and track your real progress.</div></div>
-    <div class="grid-top"><section class="card hero-card"><div class="hero-copy"><div class="hero-label">Calories remaining</div><div class="hero-number">1,255<small>kcal</small></div><hr class="hero-divider"><div class="hero-stats"><div><span>Eaten</span><b>1,245</b></div><div><span>Daily goal</span><b>2,500</b></div></div></div><div class="hero-ring"><svg viewBox="0 0 200 200" role="img" aria-label="50 percent of today's calorie goal consumed"><circle class="ring-track" cx="100" cy="100" r="80"></circle><circle class="ring-fill" cx="100" cy="100" r="80" stroke="#272729" stroke-dasharray="502.6548245743669" stroke-dashoffset="251.32741228718345"></circle></svg><div class="ring-center"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4.4 0 7-3 7-7 0-4-3-6-4-7 .4 4-2 5-2 5-.5-4-4-6-4-10-3 4-4 8-4 12 0 4 2.7 7 7 7Z"></path></svg><div class="ring-percent">50%</div><small>consumed</small></div></div></section>
-    <section class="card plan-preview-card"><div class="plan-preview-top"><span class="section-mini">Tomorrow's target</span><span class="plan-status"><svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3ZM19 17l.7 2.3L22 20l-2.3.7L19 23l-.7-2.3L16 20l2.3-.7L19 17ZM4 2l.7 2.3L7 5l-2.3.7L4 8l-.7-2.3L1 5l2.3-.7L4 2Z"></path></svg> Trend-informed</span></div><div class="plan-preview-body"><div class="tomorrow-number">2,450 <span>kcal</span></div><p class="tomorrow-desc">A measured 50 kcal decrease as your longer-term data evolves.</p></div><div class="plan-preview-bottom"><small>-50 kcal vs. today</small><button class="light-button" data-tab="plan">View plan <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button></div></section></div>
-    <div class="row-title"><h2>Today's macros</h2><button class="text-link" data-tab="log">View food diary <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button></div>
-    <div class="macro-grid"><div class="card macro-card"><div class="macro-top"><span class="macro-icon blue"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></span><span class="macro-name">Protein</span></div><div class="macro-value">100 <small>/ 149 g</small></div><div class="track"><span class="blue" style="width:67.11409395973155%"></span></div><div class="macro-caption">49 g remaining today</div></div><div class="card macro-card"><div class="macro-top"><span class="macro-icon teal"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V8M8 17l4 4 4-4M7 10l5 5 5-5M8 4c2 1 4 2 4 5 0-3 2-4 4-5"></path></svg></span><span class="macro-name">Carbs</span></div><div class="macro-value">150 <small>/ 334 g</small></div><div class="track"><span class="teal" style="width:44.91017964071856%"></span></div><div class="macro-caption">184 g remaining today</div></div><div class="card macro-card"><div class="macro-top"><span class="macro-icon orange"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2-6 8a7.2 7.2 0 0 0 12 8.2A7.2 7.2 0 0 0 18 10l-6-8Z"></path></svg></span><span class="macro-name">Fat</span></div><div class="macro-value">29 <small>/ 63 g</small></div><div class="track"><span class="orange" style="width:46.03174603174603%"></span></div><div class="macro-caption">34 g remaining today</div></div></div>
-    <div class="lower-grid"><section class="card metric-card"><div class="card-heading"><div><h3>Weight trend</h3><p>Recent morning weigh-ins</p></div><span class="trend-badge"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 17-8-8-4 4-8-8"></path><path d="M16 17h6v-6"></path></svg> -0.37 kg/wk</span></div><div class="stat-large">78.2 <small>kg</small></div><div class="chart-wrapper"><svg viewBox="0 0 650 195" role="img" aria-label="Logged weight measurements and seven-day smoothed trend" preserveAspectRatio="none"><defs><linearGradient id="trend-small-grad" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9a9a9d" stop-opacity=".15"></stop><stop offset="1" stop-color="#9a9a9d" stop-opacity="0"></stop></linearGradient></defs><line x1="8" x2="642" y1="26.2" y2="26.2" stroke="#eef1f7" stroke-dasharray="4 6"></line><line x1="8" x2="642" y1="100.0" y2="100.0" stroke="#eef1f7" stroke-dasharray="4 6"></line><line x1="8" x2="642" y1="173.8" y2="173.8" stroke="#eef1f7" stroke-dasharray="4 6"></line><path d="M8.0,60.1 L71.4,60.1 L103.1,65.8 L134.8,82.9 L166.5,82.9 L198.2,82.9 L229.9,94.3 L293.3,100.0 L325.0,105.7 L356.7,105.7 L388.4,111.4 L451.8,134.2 L483.5,145.6 L515.2,145.6 L546.9,151.3 L578.6,145.6 L610.3,151.3 L642.0,151.3 L642.0,182 L8.0,182 Z" fill="url(#trend-small-grad)"></path><path d="M8.0,48.7 L71.4,60.1 L103.1,60.1 L134.8,105.7 L166.5,94.3 L198.2,71.5 L229.9,105.7 L293.3,71.5 L325.0,94.3 L356.7,117.1 L388.4,105.7 L451.8,151.3 L483.5,139.9 L515.2,128.5 L546.9,151.3 L578.6,151.3 L610.3,128.5 L642.0,151.3" fill="none" stroke="#c1c1c5" stroke-width="1.8" stroke-dasharray="4 5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.0,60.1 L71.4,60.1 L103.1,65.8 L134.8,82.9 L166.5,82.9 L198.2,82.9 L229.9,94.3 L293.3,100.0 L325.0,105.7 L356.7,105.7 L388.4,111.4 L451.8,134.2 L483.5,145.6 L515.2,145.6 L546.9,151.3 L578.6,145.6 L610.3,151.3 L642.0,151.3" fill="none" stroke="#29292b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="642" cy="151.2500000000001" r="4.5" fill="#272729" stroke="white" stroke-width="3"></circle></svg></div><div class="axis-bottom"><span>3 weeks ago</span><span>Today</span></div></section>
-    <section class="card metric-card"><div class="card-heading"><div><h3>Quick actions</h3><p>Keep your daily record current</p></div></div><div class="quick-list">
-    <button class="quick-action" data-modal="food"><span class="quick-icon blue"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span><span><strong>Log a meal</strong><small>Add calories and macros</small></span><svg class="icon arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button>
-    <button class="quick-action" data-modal="weight"><span class="quick-icon orange"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="3"></rect><path d="M8 9a4 4 0 0 1 8 0M12 9l2-2"></path></svg></span><span><strong>Record weight</strong><small>Consistent morning weigh-ins</small></span><svg class="icon arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button>
-    <button class="quick-action" data-modal="daily"><span class="quick-icon teal"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 2 2 3-3M11 8h10m-18 8 2 2 3-3m3 1h10"></path></svg></span><span><strong>Log daily totals</strong><small>Already track food elsewhere?</small></span><svg class="icon arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button></div></section></div>
-    <div class="insight-card"><div class="insight-symbol"><svg class="icon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3ZM19 17l.7 2.3L22 20l-2.3.7L19 23l-.7-2.3L16 20l2.3-.7L19 17ZM4 2l.7 2.3L7 5l-2.3.7L4 8l-.7-2.3L1 5l2.3-.7L4 2Z"></path></svg></div><div><h3>Your estimate now uses your actual trends</h3><p>Using 25 completed food days and 25 weigh-ins over the recent observation window. Numbers are estimates, not measurements of your metabolism.</p></div></div></div></main>
+      <main id="app-content" class="main-content" tabindex="-1"><div class="screen-content welcome-page"><div class="onboard-topline">WELCOME TO METRIA · PRIVATE BY DESIGN</div><h1 class="onboard-title">Your nutrition.<br/>A clearer picture.</h1><p class="onboard-intro">A private food diary, weight trend and adaptive calorie plan — built for your iPhone. Your journal starts empty.</p><div class="preview-fallback" role="status"><div><strong>Open this website in Safari to get started</strong><p>JavaScript is needed for logging and saving entries. A document preview can show the design but cannot run the tracker.</p></div></div><section class="card onboard-feature-card"><h2>Start with your own numbers</h2><p>Set your starting details, add food and weight when you're ready, and follow longer-term trends rather than daily fluctuations.</p></section></div></main>
     </div>
     <nav class="bottom-nav" id="mobile-nav" aria-label="Bottom navigation"><button class="bottom-item active" data-tab="home" aria-current="page"><svg class="icon" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Z"></path><path d="M9 21v-8h6v8"></path></svg><span>Home</span></button><button class="bottom-item " data-tab="log" aria-current="false"><svg class="icon" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"></path><path d="M3 18V4a1 1 0 0 1 1-1h4a4 4 0 0 1 4 4 4 4 0 0 1 4-4h4a1 1 0 0 1 1 1v14h-5a4 4 0 0 0-4 3 4 4 0 0 0-4-3H3Z"></path></svg><span>Diary</span></button><button class="bottom-item " data-tab="trends" aria-current="false"><svg class="icon" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"></path><path d="m7 16 5-5 4 3 5-7"></path><path d="M17 7h4v4"></path></svg><span>Trends</span></button><button class="bottom-item " data-tab="plan" aria-current="false"><svg class="icon" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h9m4 0h3M4 17h3m4 0h9"></path><circle cx="15" cy="7" r="2"></circle><circle cx="9" cy="17" r="2"></circle></svg><span>Plan</span></button></nav>
   </div>
@@ -297,30 +318,12 @@ html.metria-live .preview-fallback{display:none}
   let storageWorks = false;
   try { const probe = '__metria_storage_probe__'; localStorage.setItem(probe,'1'); storageWorks = localStorage.getItem(probe)==='1'; localStorage.removeItem(probe); } catch(_) { storageWorks=false; }
 
-  const sampleFood = [
-    ['Protein oats', 'Breakfast', 525, 39, 65, 13],
-    ['Chicken rice bowl', 'Lunch', 720, 61, 85, 16],
-    ['Salmon & potatoes', 'Dinner', 772, 53, 72, 30],
-    ['Yogurt & nuts', 'Snacks', 285, 21, 24, 13]
-  ];
-  function newDemo() {
-    const today=dayKey();
-    const profile={name:'Alex',sex:'male',age:27,height:179,weight:78.2,activity:'moderate',goal:'cut',pace:'gentle',proteinFactor:1.9,fatFactor:0.8,manualMaintenance:null};
-    const logs={}; const weights=[];
-    for(let i=28;i>=1;i--){
-      const date=moveDay(today,-i); const n=28-i;
-      if (i!==19 && i!==12 && i!==7) {
-        const kg=79.35-(n*.042)+(Math.sin(i*1.9)*.16)+(Math.cos(i*.61)*.08);
-        weights.push({date,kg:Math.round(kg*10)/10});
-      }
-      if (i===22 || i===9) continue;
-      const factor=1+Math.sin(i*1.7)*.058;
-      const foods=sampleFood.map((f,j)=>({id:`demo-${i}-${j}`,name:f[0],meal:f[1],calories:Math.round(f[2]*factor),protein:Math.round(f[3]*factor),carbs:Math.round(f[4]*factor),fat:Math.round(f[5]*factor)}));
-      logs[date]={foods,water:1700+((i%5)*250),steps:7200+(i%8)*970,complete:true};
-    }
-    weights.push({date:today,kg:78.2});
-    logs[today]={foods:[{id:'demo-today-0',name:'Protein oats',meal:'Breakfast',calories:525,protein:39,carbs:65,fat:13},{id:'demo-today-1',name:'Chicken rice bowl',meal:'Lunch',calories:720,protein:61,carbs:85,fat:16}],water:1250,steps:6850,complete:false};
-    return {version:VERSION,mode:'demo',profile,logs,weights,plan:{activeTarget:2500,lastUpdated:today,history:[{date:today,target:2500}]}};
+  function newBlank() {
+    return {
+      version:VERSION,mode:'setup',
+      profile:{name:'',sex:'other',age:25,height:170,weight:75,activity:'light',goal:'maintain',pace:'gentle',proteinFactor:1.8,fatFactor:0.8,manualMaintenance:null},
+      logs:{},weights:[],plan:null
+    };
   }
   function validDate(k) { return typeof k==='string' && /^\d{4}-\d{2}-\d{2}$/.test(k) && dayKey(parseDay(k))===k; }
   function sanitizeImport(obj) {
@@ -335,9 +338,9 @@ html.metria-live .preview-fallback{display:none}
     }
     const weights=[...new Map(obj.weights.filter(w=>w&&validDate(w.date)&&Number.isFinite(Number(w.kg))&&Number(w.kg)>=35&&Number(w.kg)<=300).slice(-2000).map(w=>[w.date,{date:w.date,kg:Number(w.kg)}])).values()].sort((a,b)=>a.date.localeCompare(b.date));
     const plan=obj.plan && Number.isFinite(Number(obj.plan.activeTarget)) && validDate(obj.plan.lastUpdated) ? {activeTarget:clamp(Number(obj.plan.activeTarget),1200,5500),lastUpdated:obj.plan.lastUpdated,history:Array.isArray(obj.plan.history)?obj.plan.history.filter(h=>h&&validDate(h.date)&&Number.isFinite(Number(h.target))).slice(-365).map(h=>({date:h.date,target:clamp(Number(h.target),1200,5500)})):[]} : null;
-    return {version:VERSION,mode:obj.mode==='demo'?'demo':'personal',profile,logs,weights,plan};
+    return {version:VERSION,mode:obj.mode==='demo'?'demo':obj.mode==='setup'?'setup':'personal',profile,logs,weights,plan};
   }
-  function load(){ try {const raw=localStorage.getItem(STORAGE_KEY);if(raw)return sanitizeImport(JSON.parse(raw));}catch(e){console.warn('Metria data could not be read',e);}return newDemo(); }
+  function load(){ try {const raw=localStorage.getItem(STORAGE_KEY);if(raw){const prior=sanitizeImport(JSON.parse(raw)); if(prior.mode==='demo')return newBlank(); return prior;}}catch(e){console.warn('Metria data could not be read',e);}return newBlank(); }
   function save(){if(!storageWorks)return;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){storageWorks=false;toast('Storage unavailable. Export your data before closing.',true);}}
   function logFor(date,create=false){ if(!state.logs[date]&&create) state.logs[date]={foods:[],water:0,steps:0,complete:false}; return state.logs[date] || {foods:[],water:0,steps:0,complete:false}; }
   function totals(date){const l=logFor(date); return l.foods.reduce((a,f)=>({calories:a.calories+f.calories,protein:a.protein+f.protein,carbs:a.carbs+f.carbs,fat:a.fat+f.fat}),{calories:0,protein:0,carbs:0,fat:0});}
@@ -358,7 +361,10 @@ html.metria-live .preview-fallback{display:none}
     const coverage=span?completed.length/span:0;
     const freshFoods=completed.filter(k=>k>=moveDay(today,-6)).length;
     const freshWeights=weights.filter(w=>w.date>=moveDay(today,-6)).length;
-    const usable=span>=14 && completed.length>=12 && coverage>=.68 && weights.length>=10 && weightSpan>=12 && freshFoods>=2 && freshWeights>=2;
+    const weightStart=weights.length?weights[0].date:null,weightEnd=weights.length?weights[weights.length-1].date:null;
+    const matched=completed.filter(k=>weightStart&&k>=weightStart&&k<=weightEnd);
+    const matchedCoverage=weightSpan>=0?matched.length/(weightSpan+1):0;
+    const usable=span>=14 && matched.length>=12 && matchedCoverage>=.68 && weights.length>=10 && weightSpan>=12 && freshFoods>=2 && freshWeights>=2;
     let weightSlope=0,observedTdee=null,effective=baseline,alpha=0,quality='Getting started';
     if(usable){
       const slopes=[];
@@ -367,7 +373,7 @@ html.metria-live .preview-fallback{display:none}
         if(days>=7)slopes.push((weights[j].kg-weights[i].kg)/days);
       }
       weightSlope=median(slopes);
-      const avgCalories=average(completed.map(d=>totals(d).calories));
+      const avgCalories=average(matched.map(d=>totals(d).calories));
       observedTdee=avgCalories-weightSlope*7700;
       const plausible=observedTdee>baseline*.6 && observedTdee<baseline*1.45 && observedTdee>1200 && observedTdee<5500;
       if(plausible){alpha=clamp(.42+(Math.min(span,28)-14)*.023,.42,.74);effective=baseline*(1-alpha)+observedTdee*alpha;quality=span>=21&&completed.length>=18&&weights.length>=17?'Trend-informed':'Learning';}
@@ -386,6 +392,7 @@ html.metria-live .preview-fallback{display:none}
     return {bmr,baseline,effective,observedTdee,alpha,calibrated:!!observedTdee,quality,span,coverage,completed:completed.length,weighDays:weights.length,weightSpan,weightSlope,weight,bmi,protectedCut,desiredTarget:round25(safeTarget),adjustment:delta};
   }
   function ensurePlanForToday(){
+    if(state.mode!=='personal')return;
     const today=dayKey(),e=calculateEngine();
     if(!state.plan || !Number.isFinite(Number(state.plan.activeTarget))){state.plan={activeTarget:e.desiredTarget,lastUpdated:today,history:[{date:today,target:e.desiredTarget}]};save();return;}
     // A low-BMI safety check overrides the normal gradual adjustment limit.
@@ -412,7 +419,15 @@ html.metria-live .preview-fallback{display:none}
     }
   }
   function resetPlan(){state.plan=null;ensurePlanForToday();}
-  function targetsFor(calories){let protein=Math.round(currentWeight()*state.profile.proteinFactor),fat=Math.round(currentWeight()*state.profile.fatFactor);let carbs=Math.round((calories-protein*4-fat*9)/4);if(carbs<50){fat=Math.max(30,Math.round((calories-protein*4-200)/9));carbs=Math.round((calories-protein*4-fat*9)/4);}return {calories,protein,carbs:Math.max(0,carbs),fat};}
+  function targetsFor(calories){
+    const desiredProtein=Math.round(currentWeight()*state.profile.proteinFactor);
+    const protein=Math.max(0,Math.min(desiredProtein,Math.floor(calories*.45/4)));
+    const desiredFat=Math.round(currentWeight()*state.profile.fatFactor);
+    const remaining=Math.max(0,calories-protein*4);
+    const fat=Math.max(0,Math.min(desiredFat,Math.floor(remaining*.65/9)));
+    const carbs=Math.max(0,Math.round((calories-protein*4-fat*9)/4));
+    return {calories,protein,carbs,fat};
+  }
   function getTomorrow(){const e=calculateEngine(),current=state.plan.activeTarget;let difference=e.desiredTarget-current;
     if(!e.calibrated && state.profile.manualMaintenance===null)difference=0;
     let tomorrow=round25(current+clamp(difference,-50,50));
@@ -422,8 +437,16 @@ html.metria-live .preview-fallback{display:none}
     return {calories:tomorrow,change:tomorrow-current,engine:e};
   }
   const macroCard=(kind,label,value,target,color,iconName)=>`<div class="card macro-card"><div class="macro-top"><span class="macro-icon ${color}">${icon(iconName)}</span><span class="macro-name">${label}</span></div><div class="macro-value">${fmt(value)} <small>/ ${fmt(target)} g</small></div><div class="track"><span class="${color}" style="width:${clamp(target?value/target*100:0,0,100)}%"></span></div><div class="macro-caption">${fmt(Math.max(0,target-value))} g remaining today</div></div>`;
-  const tagDemo=()=>state.mode==='demo'?'<span class="demo-label">DEMO</span>':'';
-  function demoNotice(){return !storageWorks?`<div class="notice demo-notice">${icon('info')}<div><b>Preview only — changes won't be saved.</b> This viewer blocks browser storage. Open the app on a normal HTTPS website in Safari to track progress reliably. You can still explore the interface.</div></div>`:state.mode==='demo'?`<div class="notice demo-notice">${icon('info')}<div><b>You're exploring sample data.</b> All weights and meals shown here are fictional. <button data-action="start-personal">Start your own plan</button> to clear the samples and track your real progress.</div></div>`:'';}
+  const tagDemo=()=>'';
+  function demoNotice(){return !storageWorks?`<div class="notice demo-notice">${icon('info')}<div><b>Saving isn't available in this browser.</b> This session may not persist. Open the hosted app in Safari; export a backup before closing if you add records.</div></div>`:'';}
+  function renderWelcome(){return `<div class="screen-content welcome-page">
+    <div class="onboard-topline">WELCOME TO METRIA · MADE FOR IPHONE</div>
+    <div class="onboard-intro-grid"><div><h1 class="onboard-title">Understand your<br/><span>daily balance.</span></h1><p class="onboard-intro">A beautifully simple place for your nutrition, morning weigh-ins and long-term maintenance estimate. Start with your own details — no fictional records.</p><button class="button primary onboard-main-button" data-action="start-personal">${icon('arrow-right')} Set up my plan</button><p class="onboard-private">${icon('lock-keyhole',16)} No account. Your entries stay on this device.</p></div>
+    <div class="onboard-display" aria-hidden="true"><div class="mock-top">TODAY <span>${icon('activity',18)}</span></div><div class="mock-number">— <small>kcal</small></div><div class="mock-caption">Your personal target appears here</div><div class="mock-lines"><span></span><span></span><span></span></div><div class="mock-footer">Your real progress, not sample numbers.</div></div></div>
+    ${!storageWorks?`<div class="notice demo-notice">${icon('info')}<div><b>Local saving is unavailable here.</b> Open the GitHub Pages website in Safari before you begin tracking.</div></div>`:''}
+    <div class="onboard-perks"><div>${icon('utensils',22)}<h3>Track food</h3><p>Log calories, protein, carbs and fat in seconds.</p></div><div>${icon('scale',22)}<h3>See trends</h3><p>Visualize weight without overreacting to fluctuations.</p></div><div>${icon('target',22)}<h3>Refine carefully</h3><p>Maintenance estimates improve with enough complete data.</p></div></div>
+    <p class="onboard-disclaimer">Calorie targets are starting estimates, not prescriptions. Changes are deliberately conservative and depend on consistent data.</p>
+  </div>`;}
   function pageHeading(kicker,title,sub='',actions=''){return `<div class="head-row"><div><p class="kicker">${kicker}</p><h1 class="page-title">${title} ${tagDemo()}</h1>${sub?`<p class="page-subtitle">${sub}</p>`:''}</div>${actions}</div>`;}
   function ring(percent){const r=80,circ=2*Math.PI*r;return `<div class="hero-ring"><svg viewBox="0 0 200 200" role="img" aria-label="${Math.round(percent)} percent of today's calorie goal consumed"><circle class="ring-track" cx="100" cy="100" r="80"/><circle class="ring-fill" cx="100" cy="100" r="80" stroke="#272729" stroke-dasharray="${circ}" stroke-dashoffset="${circ*(1-clamp(percent,0,100)/100)}"/></svg><div class="ring-center">${icon('flame',20)}<div class="ring-percent">${Math.round(percent)}%</div><small>consumed</small></div></div>`;}
   function chartSvg(weights,large=false){
@@ -461,7 +484,7 @@ html.metria-live .preview-fallback{display:none}
     let offset=diffDays(k,today); const strip=Array.from({length:7},(_,i)=>moveDay(k,i-3));if(strip[0]>today){strip.splice(0,7,...Array.from({length:7},(_,i)=>moveDay(today,i-6)));}
     const mealSections=meals.map(meal=>{const foods=l.foods.filter(f=>f.meal===meal),sum=foods.reduce((s,f)=>s+f.calories,0);
       return `<section class="card log-section"><div class="meal-heading"><h3 class="meal-name">${meal}<span class="meal-count">${foods.length?`${foods.length} item${foods.length===1?'':'s'}`:''}</span></h3><span class="meal-kcal">${fmt(sum)} kcal</span></div>
-      ${foods.length?foods.map(f=>`<div class="food-row"><div class="food-avatar">${icon('utensils',17)}</div><div style="min-width:0"><strong>${esc(f.name)}</strong><small>P ${fmt(f.protein)}g · C ${fmt(f.carbs)}g · F ${fmt(f.fat)}g</small></div><span class="food-energy">${fmt(f.calories)}</span><button class="icon-button" title="Remove ${esc(f.name)}" aria-label="Remove ${esc(f.name)}" data-action="remove-food" data-id="${esc(f.id)}" data-date="${k}">${icon('x')}</button></div>`).join(''):'<p class="small-print">Nothing logged yet.</p>'}
+      ${foods.length?foods.map(f=>`<div class="food-row"><div class="food-avatar">${icon('utensils',17)}</div><div style="min-width:0"><strong>${esc(f.name)}</strong><small>P ${fmt(f.protein)}g · C ${fmt(f.carbs)}g · F ${fmt(f.fat)}g</small></div><span class="food-energy">${fmt(f.calories)}</span><button class="icon-button" title="Edit ${esc(f.name)}" aria-label="Edit ${esc(f.name)}" data-modal="food-edit" data-id="${esc(f.id)}">${icon('pencil',16)}</button><button class="icon-button" title="Remove ${esc(f.name)}" aria-label="Remove ${esc(f.name)}" data-action="remove-food" data-id="${esc(f.id)}" data-date="${k}">${icon('x')}</button></div>`).join(''):'<p class="small-print">Nothing logged yet.</p>'}
       <button class="add-meal-button" data-modal="food" data-meal="${meal}">${icon('plus')} Add ${meal.toLowerCase()}</button></section>`;
     }).join('');
     return `<div class="screen-content">${pageHeading('YOUR NUTRITION JOURNAL','Food diary','Log what you actually eat. Mark a day complete only when everything is included.',`<div class="right-actions"><button class="button ghost small" data-modal="daily">Daily totals</button><button class="button primary small" data-modal="food">${icon('plus')} Add food</button></div>`)}${demoNotice()}
@@ -491,23 +514,25 @@ html.metria-live .preview-fallback{display:none}
   }
   function renderSettings(){const p=state.profile;return `<div class="screen-content">${pageHeading('YOUR SPACE','Settings','Manage your goals, data, and on-device preferences.')}${demoNotice()}
     <div class="plan-detail-grid"><section class="card card-pad"><div class="card-heading"><div><h3>Personal profile</h3><p>Used to build an initial calorie estimate</p></div><button class="text-link" data-modal="profile">${icon('pencil')} Edit</button></div><div class="info-list"><div class="info-row"><span>Name</span><b>${esc(p.name)}</b></div><div class="info-row"><span>Age</span><b>${fmt(p.age)} years</b></div><div class="info-row"><span>Height</span><b>${fmt(p.height)} cm</b></div><div class="info-row"><span>Latest weight</span><b>${fmt(currentWeight(),1)} kg</b></div><div class="info-row"><span>Activity</span><b>${({sedentary:'Sedentary',light:'Light',moderate:'Moderate',active:'Active',very:'Very active'})[p.activity]}</b></div><div class="info-row"><span>Goal</span><b>${({cut:'Cut',maintain:'Maintain',gain:'Gain'})[p.goal]}</b></div></div></section>
-    <section class="card card-pad"><div class="card-heading"><div><h3>Privacy & backup</h3><p>Everything is stored in this browser</p></div>${icon('shield-check',20)}</div><div class="plan-callout">${icon('lock-keyhole',20)}<div><strong>On-device storage</strong><p>No account, no server, no analytics, and no automatic Apple Health access. Clearing Safari website data may remove your entries.</p></div></div><div class="settings-actions"><button class="button secondary small" data-action="export">${icon('download')} Export data</button><label class="button ghost small clickable">${icon('upload')} Import data<input type="file" id="import-input" accept="application/json,.json" style="display:none"/></label></div><div class="subtle-divider"></div><button class="button danger small" data-action="reset">${icon('trash-2')} Reset all data</button><p class="small-print">Export first to keep your records. Imports replace the current on-device records.</p></section></div>
+    <section class="card card-pad"><div class="card-heading"><div><h3>Privacy & backup</h3><p>Everything is stored in this browser</p></div>${icon('shield-check',20)}</div><div class="plan-callout">${icon('lock-keyhole',20)}<div><strong>On-device storage</strong><p>No account, no server, no analytics, and no automatic Apple Health access. Clearing Safari website data may remove your entries.</p></div></div><div class="settings-actions"><button class="button secondary small" data-action="export">${icon('download')} JSON backup</button><button class="button ghost small" data-action="export-csv">${icon('download')} CSV history</button><label class="button ghost small clickable">${icon('upload')} Import data<input type="file" id="import-input" accept="application/json,.json" style="display:none"/></label></div><div class="subtle-divider"></div><button class="button danger small" data-action="reset">${icon('trash-2')} Reset all data</button><p class="small-print">Export first to keep your records. Imports replace the current on-device records.</p></section></div>
     <div class="row-title"><h2>Install on iPhone</h2></div><section class="card card-pad"><div class="card-heading"><div><h3>Add Metria to your Home Screen</h3><p>A standalone app experience from a secure website</p></div>${icon('apple',22)}</div><div class="info-list"><div class="info-row"><span>1. Open the hosted website in Safari</span><b>HTTPS required</b></div><div class="info-row"><span>2. Tap Share</span><b>Safari toolbar</b></div><div class="info-row"><span>3. Select Add to Home Screen</span><b>Metria icon</b></div></div><p class="small-print">You can also open index.html locally as a basic webpage for testing. Offline installation requires deployment to HTTPS. Apple Health / HealthKit syncing would need a supported native integration and is not included in this version.</p></section>
-    <p class="footer-text">Metria v1.0 · Local-first nutrition companion. Calorie, expenditure and body-weight trend estimates are approximate. For personalized medical or nutrition treatment, consult a qualified professional.</p></div>`;}
+    <p class="footer-text">Metria v1.1 · Local-first nutrition companion. Calorie, expenditure and body-weight trend estimates are approximate. For personalized medical or nutrition treatment, consult a qualified professional.</p></div>`;}
   function renderNav(){
     document.getElementById('desktop-nav').innerHTML=navItems.map(([tab,name,ico],i)=>`${i===4?'<div class="nav-divider"></div>':''}<button class="nav-item ${view===tab?'active':''}" data-tab="${tab}" aria-current="${view===tab?'page':'false'}">${icon(ico,20)} ${name}</button>`).join('');
     document.getElementById('mobile-nav').innerHTML=navItems.filter(x=>x[0]!=='settings').map(([tab,name,ico])=>`<button class="bottom-item ${view===tab?'active':''}" data-tab="${tab}" aria-current="${view===tab?'page':'false'}">${icon(ico,23)}<span>${tab==='home'?'Home':tab==='log'?'Diary':tab==='trends'?'Trends':'Plan'}</span></button>`).join('');
     document.getElementById('profile-trigger').textContent=(state.profile.name||'M').trim().slice(0,1).toUpperCase();
     document.getElementById('topbar-label').textContent=({home:'YOUR DAILY OVERVIEW',log:'NUTRITION JOURNAL',trends:'BODY WEIGHT',plan:'ADAPTIVE PLAN',settings:'APP SETTINGS'})[view];
   }
-  function render(){ensurePlanForToday();renderNav();document.getElementById('app-content').innerHTML=({home:renderHome,log:renderLog,trends:renderTrends,plan:renderPlan,settings:renderSettings})[view]();document.documentElement.classList.add('metria-live');}
+  function render(){ensurePlanForToday();if(state.mode==='setup')view='home';renderNav();document.getElementById('app-content').innerHTML=state.mode==='setup'?renderWelcome():({home:renderHome,log:renderLog,trends:renderTrends,plan:renderPlan,settings:renderSettings})[view]();document.body.classList.toggle('metria-onboarding',state.mode==='setup');document.documentElement.classList.add('metria-live');}
   function navigate(tab){if(!['home','log','trends','plan','settings'].includes(tab))return;view=tab;try{if(location.protocol!=='about:')history.replaceState(null,'',location.pathname+location.search+'#'+tab);}catch(_ignored){}render();window.scrollTo({top:0,behavior:'auto'});}
   function toast(message,error=false){const stack=document.getElementById('toast-stack'),node=document.createElement('div');node.className='toast';node.innerHTML=`${icon(error?'info':'check')} <span>${esc(message)}</span>`;stack.appendChild(node);setTimeout(()=>node.remove(),3200);}
   function modalShell(title,subtitle,content,submitLabel,submitAction){return `<div class="modal-backdrop" id="modal-backdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-header"><div><h2>${esc(title)}</h2><p>${esc(subtitle)}</p></div><button class="modal-close" data-action="close-modal" aria-label="Close">${icon('x',19)}</button></div><form id="modal-form" data-form="${submitAction}"><div class="modal-body">${content}</div><div class="modal-footer"><button class="button ghost" data-action="close-modal" type="button">Cancel</button><button class="button primary" type="submit">${icon('check')} ${esc(submitLabel)}</button></div></form></div></div>`;}
   function field(id,label,value,type='number',opts=''){return `<div class="field"><label for="${id}">${label}</label><input id="${id}" name="${id}" type="${type}" value="${esc(value)}" ${opts} required/></div>`;}
-  function openModal(type,meal=''){priorFocus=document.activeElement;modal=type;let content='';
-    if(type==='food'){
-      content=modalShell('Log food','Add a meal with calories and macronutrients.',`<div class="form-grid" style="grid-template-columns:1fr"><div class="field"><label for="food-name">Food / meal name</label><input id="food-name" name="name" maxlength="90" placeholder="e.g. Chicken and rice" autocomplete="off" required/></div><div class="field"><label for="food-meal">Meal</label><select id="food-meal" name="meal">${meals.map(m=>`<option ${m===meal?'selected':''}>${m}</option>`).join('')}</select></div></div><div class="subtle-divider"></div><div class="form-grid">${field('calories','Calories (kcal)','', 'number','min="0" max="10000" step="1" placeholder="e.g. 450"')}${field('protein','Protein (g)',0,'number','min="0" max="1200" step="0.1"')}${field('carbs','Carbs (g)',0,'number','min="0" max="1500" step="0.1"')}${field('fat','Fat (g)',0,'number','min="0" max="1000" step="0.1"')}</div><div class="calorie-preview"><span>Energy calculated from macros</span><strong id="macro-energy">0 kcal</strong></div><p class="input-caption">You can log calories directly from a food label. Calories from rounded macros may differ slightly; the app uses the calories you enter.</p>`, 'Save food','food');
+  function openModal(type,meal='',foodId=''){priorFocus=document.activeElement;modal=type;let content='';
+    if(type==='food'||type==='food-edit'){
+      const edit=type==='food-edit'?logFor(selectedDate).foods.find(f=>f.id===foodId):null;
+      if(type==='food-edit'&&!edit){toast('Food entry not found.',true);return;}
+      content=modalShell(edit?'Edit food':'Log food','Add a meal with calories and macronutrients.',`<div class="form-grid" style="grid-template-columns:1fr"><div class="field"><label for="food-name">Food / meal name</label><input id="food-name" name="name" maxlength="90" value="${esc(edit?.name||'')}" placeholder="e.g. Chicken and rice" autocomplete="off" required/></div><div class="field"><label for="food-meal">Meal</label><select id="food-meal" name="meal">${meals.map(m=>`<option ${m===(edit?.meal||meal)?'selected':''}>${m}</option>`).join('')}</select></div></div><div class="subtle-divider"></div><div class="form-grid">${field('calories','Calories (kcal)',edit?.calories??'', 'number','min="0" max="10000" step="1" placeholder="e.g. 450"')}${field('protein','Protein (g)',edit?.protein??0,'number','min="0" max="1200" step="0.1"')}${field('carbs','Carbs (g)',edit?.carbs??0,'number','min="0" max="1500" step="0.1"')}${field('fat','Fat (g)',edit?.fat??0,'number','min="0" max="1000" step="0.1"')}</div><div class="calorie-preview"><span>Energy calculated from macros</span><strong id="macro-energy">0 kcal</strong></div><p class="input-caption">You can log calories directly from a food label. Calories from rounded macros may differ slightly; the app uses the calories you enter.</p>`, edit?'Update food':'Save food',edit?'food-edit':'food');
     }else if(type==='daily'){
       const t=totals(selectedDate);
       content=modalShell('Log daily totals','For totals copied from another nutrition diary.',`<div class="modal-badge">This replaces all food entries for ${esc(longDate(selectedDate,{month:'short',day:'numeric'}))} with one daily summary. Use it only when your numbers include everything eaten.</div><div class="form-grid">${field('calories','Calories (kcal)',t.calories||'', 'number','min="0" max="10000" step="1" placeholder="e.g. 2400"')}${field('protein','Protein (g)',t.protein,'number','min="0" max="1200" step="0.1"')}${field('carbs','Carbs (g)',t.carbs,'number','min="0" max="1500" step="0.1"')}${field('fat','Fat (g)',t.fat,'number','min="0" max="1000" step="0.1"')}</div><div class="calorie-preview"><span>Energy calculated from macros</span><strong id="macro-energy">${fmt(Math.round(t.protein*4+t.carbs*4+t.fat*9))} kcal</strong></div><p class="input-caption">Mark the day complete after saving if these totals truly represent your full day's food intake.</p>`, 'Save daily totals','daily');
@@ -519,18 +544,19 @@ html.metria-live .preview-fallback{display:none}
       content=modalShell('Log steps','Steps are useful context; do not automatically count them twice.',`${field('steps','Steps',logFor(selectedDate).steps,'number','min="0" max="150000" step="1"')}<p class="input-caption">This is manual tracking. No watch or HealthKit connection is active.</p>`,'Save steps','steps');
     }else if(type==='profile'){
       const p=state.profile;
-      const profileForm=`<div class="form-grid">${field('name','Your name',state.mode==='demo'?'':p.name,'text','maxlength="35" placeholder="Your name"')}
+      const profileForm=`<div class="form-grid">${field('name','Your name',state.mode==='setup'?'':p.name,'text','maxlength="35" placeholder="Your name"')}
       <div class="field"><label for="sex">Equation reference</label><select id="sex" name="sex"><option value="male" ${p.sex==='male'?'selected':''}>Male equation</option><option value="female" ${p.sex==='female'?'selected':''}>Female equation</option><option value="other" ${p.sex==='other'?'selected':''}>Midpoint estimate</option></select></div>
-      ${field('age','Age (18+)',p.age,'number','min="18" max="100" step="1"')}${field('height','Height (cm)',p.height,'number','min="120" max="230" step="0.1"')}${field('weight','Current weight (kg)',fmt(currentWeight(),1),'number','min="35" max="300" step="0.1"')}
+      ${field('age','Age (18+)',state.mode==='setup'?'':p.age,'number','min="18" max="100" step="1"')}${field('height','Height (cm)',state.mode==='setup'?'':p.height,'number','min="120" max="230" step="0.1"')}${field('weight','Current weight (kg)',state.mode==='setup'?'':fmt(currentWeight(),1),'number','min="35" max="300" step="0.1"')}
       <div class="field"><label for="activity">Activity level</label><select id="activity" name="activity">${[['sedentary','Mostly sitting'],['light','Lightly active'],['moderate','Moderately active'],['active','Very active'],['very','Extremely active']].map(([v,l])=>`<option value="${v}" ${p.activity===v?'selected':''}>${l}</option>`).join('')}</select></div>
       <div class="field"><label for="goal">Goal</label><select id="goal" name="goal">${[['maintain','Maintain'],['cut','Gentle cut'],['gain','Gradual gain']].map(([v,l])=>`<option value="${v}" ${p.goal===v?'selected':''}>${l}</option>`).join('')}</select></div>
       <div class="field"><label for="pace">Pace</label><select id="pace" name="pace"><option value="gentle" ${p.pace==='gentle'?'selected':''}>Gentle</option><option value="steady" ${p.pace==='steady'?'selected':''}>Steady (still gradual)</option></select></div>
       ${field('protein-factor','Protein (g/kg)',p.proteinFactor,'number','min="1.2" max="2.2" step="0.1"')}${field('fat-factor','Fat (g/kg)',p.fatFactor,'number','min="0.6" max="1.2" step="0.1"')}
-      </div><div class="subtle-divider"></div><div class="field"><label for="manual-tdee">Optional known maintenance estimate (kcal)</label><input id="manual-tdee" name="manual-tdee" type="number" min="1200" max="5500" step="25" placeholder="Leave blank to estimate" value="${p.manualMaintenance??''}"/><span class="hint">An initial guess or independent estimate, not a guaranteed value. Recorded trends can still refine it.</span></div><p class="input-caption">Metria is for adults 18+. Its estimates use population equations and do not replace clinical advice.</p>`;
-      content=modalShell(state.mode==='demo'?'Create your plan':'Edit your plan',state.mode==='demo'?'This removes fictional sample data and starts a fresh private diary.':'Updates your targets while keeping recorded entries.',`${state.mode==='demo'?'<div class="modal-badge">You are in demo mode. Saving will clear all example food and weight entries.</div>':''}${profileForm}`,state.mode==='demo'?'Create personal plan':'Save changes','profile');
+      </div><div class="subtle-divider"></div><div class="field"><label for="manual-tdee">Optional known maintenance estimate (kcal)</label><input id="manual-tdee" name="manual-tdee" type="number" min="1200" max="5500" step="25" placeholder="Leave blank to estimate" value="${p.manualMaintenance??''}"/><span class="hint">An initial guess or independent estimate, not a guaranteed value. Recorded trends can still refine it.</span></div><p class="input-caption">Metria is for adults 18+. It uses population equations and your logged trends to estimate needs; results are not medical advice.</p>`;
+      content=modalShell(state.mode==='setup'?'Create your plan':'Edit your plan',state.mode==='setup'?'Start an empty, private diary with your own measurements.':'Updates your targets while keeping recorded entries.',`${state.mode==='setup'?'<div class="modal-badge">Your diary starts empty. Nothing here is prefilled from sample data.</div>':''}${profileForm}`,state.mode==='setup'?'Create personal plan':'Save changes','profile');
     }
     if(!content)return;
     document.getElementById('modal-root').innerHTML=content;
+    if(type==='food-edit')document.getElementById('modal-form').dataset.foodId=foodId;
     document.body.style.overflow='hidden';
     requestAnimationFrame(()=>document.querySelector('#modal-form input')?.focus({preventScroll:true}));
   }
@@ -540,13 +566,14 @@ html.metria-live .preview-fallback{display:none}
     const vals=['calories','protein','carbs','fat'].map(k=>Number(f.get(k)));
     if(vals.some((n,i)=>!Number.isFinite(n)||n<0||n>(i===0?10000:1500)))throw Error('Please enter valid nutrition values.');
     if(vals[0]===0&&vals.slice(1).some(n=>n>0))throw Error('Calories cannot be zero when macros are provided.');
-    const record={id:`${Date.now()}-${Math.random().toString(36).slice(2,8)}`,name,meal,calories:Math.round(vals[0]),protein:Math.round(vals[1]*10)/10,carbs:Math.round(vals[2]*10)/10,fat:Math.round(vals[3]*10)/10};
-    const l=logFor(selectedDate,true);l.foods.push(record);l.complete=false;save();toast('Food added to diary.');
+    const record={id:form.dataset.form==='food-edit'?form.dataset.foodId:`${Date.now()}-${Math.random().toString(36).slice(2,8)}`,name,meal,calories:Math.round(vals[0]),protein:Math.round(vals[1]*10)/10,carbs:Math.round(vals[2]*10)/10,fat:Math.round(vals[3]*10)/10};
+    const l=logFor(selectedDate,true);if(form.dataset.form==='food-edit'){const idx=l.foods.findIndex(f=>f.id===record.id);if(idx<0)throw Error('Food entry no longer exists.');l.foods[idx]=record;}else l.foods.push(record);l.complete=false;save();toast(form.dataset.form==='food-edit'?'Food updated.':'Food added to diary.');
   }
   function saveDaily(form){
     const f=new FormData(form),vals=['calories','protein','carbs','fat'].map(k=>Number(f.get(k)));
     if(vals.some((n,i)=>!Number.isFinite(n)||n<0||n>(i===0?10000:1500))||vals[0]===0)throw Error('Enter complete, valid daily totals.');
     const l=logFor(selectedDate,true);
+    if(l.foods.length && !confirm('Replace all existing food entries for this date with one daily total? This cannot be undone.'))return;
     l.foods=[{id:`daily-${Date.now()}`,name:'Daily totals · manual entry',meal:'Snacks',calories:Math.round(vals[0]),protein:Math.round(vals[1]*10)/10,carbs:Math.round(vals[2]*10)/10,fat:Math.round(vals[3]*10)/10}];
     l.complete=false;save();toast('Daily totals saved. Mark the day complete when ready.');
   }
@@ -556,27 +583,30 @@ html.metria-live .preview-fallback{display:none}
   }
   function saveProfile(form){const f=new FormData(form),name=String(f.get('name')||'').trim().slice(0,35);
     const number=k=>Number(f.get(k)); const age=number('age'),height=number('height'),weight=number('weight'),protein=number('protein-factor'),fat=number('fat-factor');
-    if(!name||age<18||age>100||height<120||height>230||weight<35||weight>300||protein<1.2||protein>2.2||fat<.6||fat>1.2)throw Error('Please check your name, age, measurements and macro values.');
+    if(!name||!Number.isFinite(age)||age<18||age>100||!Number.isFinite(height)||height<120||height>230||!Number.isFinite(weight)||weight<35||weight>300||!Number.isFinite(protein)||protein<1.2||protein>2.2||!Number.isFinite(fat)||fat<.6||fat>1.2)throw Error('Please check your name, age, measurements and macro values.');
     const manual=String(f.get('manual-tdee')||'').trim();
     if(manual&&(!Number.isFinite(Number(manual))||Number(manual)<1200||Number(manual)>5500))throw Error('Maintenance override must be 1,200–5,500 kcal.');
     const profile={name,sex:String(f.get('sex')),age,height,weight,activity:String(f.get('activity')),goal:String(f.get('goal')),pace:String(f.get('pace')),proteinFactor:protein,fatFactor:fat,manualMaintenance:manual?Number(manual):null};
-    if(state.mode==='demo'){state={version:VERSION,mode:'personal',profile,logs:{},weights:[{date:dayKey(),kg:weight}],plan:null};}
+    if(state.mode==='setup'||state.mode==='demo'){state={version:VERSION,mode:'personal',profile,logs:{},weights:[{date:dayKey(),kg:Math.round(weight*10)/10}],plan:null};}
     else {state.profile=profile;const today=dayKey();const prev=state.weights.find(w=>w.date===today);if(!prev||Math.abs(prev.kg-weight)>.049){state.weights=state.weights.filter(w=>w.date!==today);state.weights.push({date:today,kg:Math.round(weight*10)/10});}}
     resetPlan();save();toast('Your plan has been updated.');
   }
   function handleSubmit(event){const form=event.target;if(form.id!=='modal-form')return;event.preventDefault();try{const type=form.dataset.form;
-    if(type==='food')saveFood(form);else if(type==='daily')saveDaily(form);else if(type==='weight')saveWeight(form);else if(type==='profile')saveProfile(form);
+    if(type==='food'||type==='food-edit')saveFood(form);else if(type==='daily')saveDaily(form);else if(type==='weight')saveWeight(form);else if(type==='profile')saveProfile(form);
     else if(type==='water'){const v=Number(new FormData(form).get('water'));if(!Number.isFinite(v)||v<0||v>12000)throw Error('Enter a valid water amount.');logFor(selectedDate,true).water=v;save();toast('Water updated.');}
     else if(type==='steps'){const v=Number(new FormData(form).get('steps'));if(!Number.isFinite(v)||v<0||v>150000)throw Error('Enter a valid step count.');logFor(selectedDate,true).steps=v;save();toast('Steps updated.');}
     closeModal();render();
   }catch(e){toast(e.message||'Could not save this entry.',true);}}
-  function exportData(){const backup=JSON.stringify({...state,exportedAt:new Date().toISOString()},null,2);const blob=new Blob([backup],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`metria-backup-${dayKey()}.json`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);toast('Backup exported.');}
-  async function importData(file){if(!file)return;try{if(file.size>3_000_000)throw Error('Backup is too large.');const parsed=JSON.parse(await file.text()),incoming=sanitizeImport(parsed);if(!confirm('Import this backup? It will replace all currently saved entries on this device.'))return;state=incoming;selectedDate=dayKey();ensurePlanForToday();save();navigate('home');toast(storageWorks?'Backup restored.':'Backup opened for this session only; storage is unavailable.',!storageWorks);}catch(e){toast(e.message||'Could not import this file.',true);}}
+  function downloadFile(text,filename,mime){const blob=new Blob([text],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
+  function exportData(){downloadFile(JSON.stringify({...state,exportedAt:new Date().toISOString()},null,2),`metria-backup-${dayKey()}.json`,'application/json');toast('Backup exported.');}
+  function exportCSV(){const dates=[...new Set([...Object.keys(state.logs),...state.weights.map(w=>w.date)])].sort();const rows=[['date','calories_kcal','protein_g','carbs_g','fat_g','food_log_complete','weight_kg','water_ml','steps']];for(const d of dates){const l=state.logs[d],w=state.weights.find(v=>v.date===d),v=totals(d);rows.push([d,l?v.calories:'',l?v.protein:'',l?v.carbs:'',l?v.fat:'',l?l.complete?'yes':'no':'',w?w.kg:'',l?l.water:'',l?l.steps:'']);}downloadFile(rows.map(row=>row.map(cell=>'"'+String(cell).replace(/"/g,'""')+'"').join(',')).join('\r\n'),`metria-history-${dayKey()}.csv`,'text/csv;charset=utf-8');toast('CSV history exported.');}
+
+  async function importData(file){if(!file)return;try{if(file.size>3_000_000)throw Error('Backup is too large.');const parsed=JSON.parse(await file.text()),incoming=sanitizeImport(parsed);if(incoming.mode==='demo')throw Error('This file contains demo records. Only personal backups can be restored.');if(!confirm('Import this backup? It will replace all currently saved entries on this device.'))return;state=incoming;selectedDate=dayKey();ensurePlanForToday();save();navigate('home');toast(storageWorks?'Backup restored.':'Backup opened for this session only; storage is unavailable.',!storageWorks);}catch(e){toast(e.message||'Could not import this file.',true);}}
   function onClick(event){
     const btn=event.target.closest('[data-tab],[data-action],[data-modal],[data-goal]');
     if(!btn){if(event.target.id==='modal-backdrop')closeModal();return;}
     if(btn.dataset.tab){navigate(btn.dataset.tab);return;}
-    if(btn.dataset.modal){openModal(btn.dataset.modal,btn.dataset.meal||'');return;}
+    if(btn.dataset.modal){openModal(btn.dataset.modal,btn.dataset.meal||'',btn.dataset.id||'');return;}
     if(btn.dataset.goal){if(!['maintain','cut','gain'].includes(btn.dataset.goal))return;state.profile.goal=btn.dataset.goal;resetPlan();save();render();toast('Goal updated.');return;}
     const action=btn.dataset.action;
     if(action==='close-modal'){closeModal();return;}
@@ -597,9 +627,10 @@ html.metria-live .preview-fallback{display:none}
     }
     if(action==='add-water'){const l=logFor(selectedDate,true);l.water=clamp(l.water+Number(btn.dataset.amount),0,12000);save();render();toast('Water added.');return;}
     if(action==='export'){exportData();return;}
+    if(action==='export-csv'){exportCSV();return;}
     if(action==='reset'){
-      if(!confirm('Delete ALL your saved diary data on this device and return to demo mode? This cannot be undone unless you have an exported backup.'))return;
-      state=newDemo();selectedDate=dayKey();resetPlan();save();navigate('home');toast('Local data reset.');return;
+      if(!confirm('Delete ALL your saved diary data and return to an empty setup? Export a backup first; this cannot be undone.'))return;
+      state=newBlank();selectedDate=dayKey();save();navigate('home');toast('Diary cleared. Set up your plan to start again.');return;
     }
   }
   document.addEventListener('click',onClick);
@@ -630,8 +661,10 @@ html.metria-live .preview-fallback{display:none}
   window.addEventListener('pageshow',()=>{if(!modal)render();});
   document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!modal)render();});
 
+  if('serviceWorker' in navigator && location.protocol==='https:'){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
+
   // Testing-only: expose non-mutating diagnostics; no user data is sent anywhere.
-  window.metriaDiagnostics=()=>({state:JSON.parse(JSON.stringify(state)),engine:calculateEngine(),tomorrow:getTomorrow(),today:dayKey()});
+  window.metriaDiagnostics=()=>({state:JSON.parse(JSON.stringify(state)),engine:state.mode==='personal'?calculateEngine():null,tomorrow:state.mode==='personal'?getTomorrow():null,today:dayKey()});
 })();
 
 </script>

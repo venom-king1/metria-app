@@ -1,0 +1,26 @@
+METRIA v1.1 — GitHub Pages update
+
+1. BACK UP: If you have started tracking personal data in Metria, open Settings > JSON backup and save the file to iPhone Files.
+2. In Safari, visit https://github.com/venom-king1/metria-app
+3. Open index.html > tap the pencil/edit button, or use Add file > Upload files (replace index.html in the root of main).
+4. Upload all SIX website files (index.html, manifest.webmanifest, sw.js and three PNG icons) from this ZIP to the root of main. Commit directly to main. GitHub may ask you to confirm overwriting the old index.html. Never upload your private JSON backups.
+5. Pages should rebuild automatically; verify https://venom-king1.github.io/metria-app/ after the new GitHub Pages deployment completes.
+6. In your iPhone Home Screen Metria app, fully close and reopen; if you still see old data, refresh the Safari tab and reopen the app.
+
+WHAT CHANGED
+- New users see clean onboarding; fictional sample records removed.
+- Stored personal data is retained using the existing metria.app.v1 local-storage key.
+- Sample-mode records already on a device become a clean setup, not real data.
+- Maintenance estimation matches complete food days with the period covered by weigh-ins.
+- Macro target energy calculations clamp unusual cases safely.
+- Reset returns to empty setup rather than fictional records.
+- Export a CSV daily history plus a full JSON backup.
+- Confirm before a daily-totals entry replaces individual foods.
+- Edit a food entry in place rather than deleting and re-entering.
+- Home Screen icon and optional offline caching when all six site files are deployed.
+
+LIMITATIONS
+- Calorie and TDEE numbers are estimates, not measurements; changes should follow several weeks of data.
+- The web app stores entries in browser storage, not on GitHub, and does not sync across devices.
+- GitHub Pages exposes public code, so never commit private diary backups.
+- Apple Health sync, accounts, database backup and background sync are not included.
